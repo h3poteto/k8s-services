@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fascia-deployment
+  namespace: fascia
+  labels:
+    app: fascia
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fascia
+  template:
+    metadata:
+      annotations:
+        iam.amazonaws.com/role: fascia-prd-pod-role
+      labels:
+        app: fascia
+    spec:
+      containers:
+        - name: go
+          image: fascia-ecr:latest
+          ports:
+            - name: tcp
+              containerPort: 9090
+              protocol: TCP
+          env:
+            - name: SERVICE_ENV
+              value: prd
+
