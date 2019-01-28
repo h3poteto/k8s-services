@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fascia-prd-target-group
+  namespace: fascia
+spec:
+  ports:
+    - port: 80
+      targetPort: 9090
+      protocol: TCP
+  type: NodePort
+  selector:
+    app: fascia
