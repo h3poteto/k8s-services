@@ -10,6 +10,10 @@ spec:
   selector:
     matchLabels:
       app: fascia
+  strategy:
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
   template:
     metadata:
       annotations:
@@ -27,4 +31,7 @@ spec:
           env:
             - name: SERVICE_ENV
               value: prd
-
+          resources:
+            requests:
+              memory: 200
+              cpu: 333m
