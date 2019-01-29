@@ -1,14 +1,6 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: fascia
+  name: web-public
   labels:
-    name: fascia
-
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: seiyuwatch
-  labels:
-    name: seiyuwatch
+    name: web-public

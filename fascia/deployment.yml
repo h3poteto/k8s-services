@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fascia-deployment
-  namespace: fascia
+  namespace: web-public
   labels:
     app: fascia
 spec:
@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: go
-          image: fascia-ecr:latest
+          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fascia:6ffcc35ff056cd7d97cc361efb8e663865663393
           ports:
             - name: tcp
               containerPort: 9090
