@@ -2,8 +2,8 @@ apiVersion: v1
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: ingress
-  namespace: fascia
+  name: alb-ingress
+  namespace: web-public
   annotations:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
@@ -13,7 +13,7 @@ metadata:
     alb.ingress.kubernetes.io/security-groups: sg-07c805c0ad5e49e2e
     alb.ingress.kubernetes.io/subnets: subnet-70bbc92b,subnet-f45541dc,subnet-fa7f7fb3
   labels:
-    app: fascia
+    app: alb-ingress
 spec:
   rules:
     - host: fascia.io
@@ -21,5 +21,5 @@ spec:
         paths:
           - path: /
             backend:
-              serviceName: fascia-prd-target-group
+              serviceName: fascia-service
               servicePort: 80
