@@ -17,14 +17,9 @@ $ go get -u -v github.com/kubernetes-sigs/aws-iam-authenticator/cmd/aws-iam-auth
 ## Initialize
 Please paste the output of https://github.com/h3poteto/h3poteto-terraform-aws/blob/master/clusters/base/prd/ap-northeast-1/output.tf#L2 to `~/.kube/config-h3poteto` .
 
-And paste the output of https://github.com/h3poteto/h3poteto-terraform-aws/blob/master/clusters/base/prd/ap-northeast-1/output.tf#L6 to `~/.kube/node-h3poteto` .
-
 ```bash
 $ export KUBECONFIG=$HOME./kube/config-h3poteto
 $ kubectl get all
-...
-
-$ kubectl apply -f ~/.kube/node-h3poteto
 ```
 
 ## Create
