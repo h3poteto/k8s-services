@@ -3,7 +3,7 @@
 
 Please prepare following packages:
 
-- kubect
+- kubectl
 - aws-iam-authenticator
 
 At first, install kubectl, refer: https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl .
@@ -26,14 +26,20 @@ $ kubectl get all
 ### Namespace
 
 ```bash
-$ kubectl -f namespace.yml
+$ kubectl apply -f namespace.yml
+```
+
+### aws-auth
+
+```bash
+$ kubectl apply -f configmap-aws-auth.yml
 ```
 
 ### kube2iam
 
 ```bash
-$ kubectl -f kube2iam-sa.yml
-$ kubectl -f kube2iam-ds.yml
+$ kubectl apply -f kube2iam-sa.yml
+$ kubectl apply -f kube2iam-ds.yml
 ```
 
 After that:
@@ -52,6 +58,34 @@ coredns-7774b7957b-jrtc9   1/1     Running   0          4h
 coredns-7774b7957b-pq2kn   1/1     Running   0          4h
 kube-proxy-mgqb8           1/1     Running   0          4h
 kube2iam-ljs4s             1/1     Running   0          1h
+```
+
+### alb-ingress-controller
+
+```bash
+$ kubectl apply -f alb-ingress-controller-sa.yml
+$ kubectl apply -f alb-ingress-controller.yml
+```
+
+### external-dns
+
+```bash
+$ kubectl apply -f external-dns-sa.yml
+$ kubectl apply -f external-dns.yml
+```
+
+### ALB and Service
+
+```bash
+$ kubectl apply -f fascia/deployment.yml
+$ kubectl apply -f fascia/service.yml
+$ kubectl apply -f ingress.yml
+```
+
+### deploy user
+
+```bash
+$ kubectl apply -f deploy-user-group.yml
 ```
 
 ## Deploy
