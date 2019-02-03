@@ -7,6 +7,9 @@ rules:
 - apiGroups: [""]
   verbs: ["get", "list", "update", "patch"]
   resources: ["pods"]
+- apiGroups: ["extensions", "apps"]
+  verbs: ["get", "list", "update", "patch"]
+  resources: ["deployments", "replicasets"]
 
 ---
 
