@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: external-dns
+  name: fascia-dns
   namespace: kube-system
 spec:
   strategy:
@@ -9,18 +9,45 @@ spec:
   template:
     metadata:
       labels:
-        app: external-dns
+        app: fascia-dns
       annotations:
         iam.amazonaws.com/role: external-dns-role
     spec:
       serviceAccountName: external-dns
       containers:
-      - name: external-dns
-        image: registry.opensource.zalan.do/teapot/external-dns:v0.5.9
-        args:
-        - --source=ingress
-        - --domain-filter=fascia.io
-        - --provider=aws
-        - --policy=sync
-        - --registry=txt
-        - --txt-owner-id=h3poteto
+        - name: fascia-dns
+          image: registry.opensource.zalan.do/teapot/external-dns:v0.5.9
+          args:
+            - --source=ingress
+            - --domain-filter=fascia.io
+            - --provider=aws
+            - --policy=sync
+            - --registry=txt
+            - --txt-owner-id=h3poteto
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: whalebirdorg-dns
+  namespace: kube-system
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: whalebirdorg-dns
+      annotations:
+        iam.amazonaws.com/role: external-dns-role
+    spec:
+      serviceAccountName: external-dns
+      containers:
+        - name: whalebirdorg-dns
+          image: registry.opensource.zalan.do/teapot/external-dns:v0.5.9
+          args:
+            - --source=ingress
+            - --domain-filter=whalebird.org
+            - --provider=aws
+            - --policy=sync
+            - --registry=txt
+            - --txt-owner-id=h3poteto
