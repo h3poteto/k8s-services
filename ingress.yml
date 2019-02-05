@@ -30,3 +30,10 @@ spec:
             backend:
               serviceName: whalebirdorg-service
               servicePort: 80
+    - host: pleroma.io
+      http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: pleromaio-service
+              servicePort: 80

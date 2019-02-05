@@ -51,3 +51,30 @@ spec:
             - --policy=sync
             - --registry=txt
             - --txt-owner-id=h3poteto
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: pleromaio-dns
+  namespace: kube-system
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: pleromaio-dns
+      annotations:
+        iam.amazonaws.com/role: external-dns-role
+    spec:
+      serviceAccountName: external-dns
+      containers:
+        - name: pleromaio-dns
+          image: registry.opensource.zalan.do/teapot/external-dns:v0.5.9
+          args:
+            - --source=ingress
+            - --domain-filter=pleroma.io
+            - --provider=aws
+            - --policy=sync
+            - --registry=txt
+            - --txt-owner-id=h3poteto
