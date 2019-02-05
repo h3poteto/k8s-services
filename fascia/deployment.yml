@@ -6,13 +6,13 @@ metadata:
   labels:
     app: fascia
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: fascia
   strategy:
     rollingUpdate:
-      maxSurge: 2
+      maxSurge: 1
       maxUnavailable: 1
   template:
     metadata:
@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: go
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fascia:6ffcc35ff056cd7d97cc361efb8e663865663393
+          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fascia:4053c16fa7838da264e3146af014d10e7943d7a0
           ports:
             - name: tcp
               containerPort: 9090
