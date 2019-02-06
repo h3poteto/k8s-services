@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: fascia-service
   namespace: web-public
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: /health_check
 spec:
   ports:
     - port: 80
