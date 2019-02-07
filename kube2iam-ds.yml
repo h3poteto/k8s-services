@@ -1,4 +1,3 @@
----
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
@@ -18,20 +17,26 @@ spec:
       serviceAccountName: kube2iam
       hostNetwork: true
       containers:
-        - name: kube2iam
-          image: jtblin/kube2iam:latest
+        # I'm waiting for https://github.com/jtblin/kube2iam/issues/178
+        - image: jtblin/kube2iam:0.10.4
           imagePullPolicy: Always
+          name: kube2iam
           args:
             - "--auto-discover-base-arn"
+            - "--auto-discover-default-role=true"
             - "--iptables=true"
             - "--host-ip=$(HOST_IP)"
+            - "--node=$(NODE_NAME)"
             - "--host-interface=eni+"
-            - "--verbose"
           env:
             - name: HOST_IP
               valueFrom:
                 fieldRef:
                   fieldPath: status.podIP
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
           ports:
             - containerPort: 8181
               hostPort: 8181
