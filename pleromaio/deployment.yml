@@ -23,7 +23,8 @@ spec:
     spec:
       containers:
         - name: phoenix
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/pleroma/phoenix:d9f38165c8057df4240c080ee6c4a1e39703fdbe
+          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/pleroma/phoenix:latest
+          imagePullPolicy: Always
           ports:
             - name: phoenix-port
               containerPort: 4000
