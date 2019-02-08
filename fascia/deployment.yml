@@ -23,7 +23,8 @@ spec:
     spec:
       containers:
         - name: go
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fascia:af18182d53f2f03af50e2b6d96d7fd174d8e69d7
+          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fascia:latest
+          imagePullPolicy: Always
           ports:
             - name: http-port
               containerPort: 9090
