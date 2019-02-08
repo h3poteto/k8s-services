@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fascia-deployment
+  name: masudastream-deployment
   namespace: web-public
   labels:
-    app: fascia
+    app: masudastream
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: fascia
+      app: masudastream
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -17,22 +17,22 @@ spec:
   template:
     metadata:
       annotations:
-        iam.amazonaws.com/role: fascia-prd-pod-role
+        iam.amazonaws.com/role: masudastream-prd-pod-role
       labels:
-        app: fascia
+        app: masudastream
     spec:
       containers:
-        - name: go
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fascia:af18182d53f2f03af50e2b6d96d7fd174d8e69d7
+        - name: django
+          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/masudastream:dd4e1c317d1b4e98ead63db8986f0a7dd61394f6
           ports:
             - name: http-port
-              containerPort: 9090
+              containerPort: 8000
               protocol: TCP
           env:
             - name: SERVICE_ENV
               value: prd
           resources:
             requests:
-              memory: 200
+              memory: 300
               cpu: 333m
       terminationGracePeriodSeconds: 60
