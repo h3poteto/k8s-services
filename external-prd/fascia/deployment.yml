@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fascia-deployment
+  namespace: web-public
+  labels:
+    app: fascia
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fascia
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      annotations:
+        iam.amazonaws.com/role: fascia-prd-pod-role
+      labels:
+        app: fascia
+    spec:
+      containers:
+        - name: go
+          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fascia:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http-port
+              containerPort: 9090
+              protocol: TCP
+          env:
+            - name: SERVICE_ENV
+              value: prd
+          resources:
+            requests:
+              memory: 200
+              cpu: 333m
+      terminationGracePeriodSeconds: 60
