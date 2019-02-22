@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: seiyuwatch-job
+  namespace: web-public
+  labels:
+    app: seiyuwatch-job
+spec:
+  template:
+    metadata:
+      annotations:
+        iam.amazonaws.com/role: seiyuwatch-prd-pod-role
+      labels:
+        app: seiyuwatch-job
+    spec:
+      containers:
+      - name: phoenix
+        image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/seiyuwatch:latest
+        imagePullPolicy: Always
+        args: ["env"]
+        env:
+          - name: SERVICE_ENV
+            value: prd
+      restartPolicy: Never
+  backoffLimit: 2
