@@ -13,4 +13,17 @@ spec:
   type: NodePort
   selector:
     app: fascia
-
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fascia-redis
+  namespace: web-public
+spec:
+  ports:
+    - port: 6379
+      targetPort: 6379
+      protocol: TCP
+  type: ClusterIP
+  selector:
+    app: fascia-redis
