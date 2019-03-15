@@ -1,0 +1,35 @@
+repositories:
+  - name: incubator
+    url: http://storage.googleapis.com/kubernetes-charts-incubator
+
+releases:
+  - name: kube2iam
+    namespace: kube-system
+    chart: stable/kube2iam
+    version: 0.10.0
+    values:
+      - rbac:
+          create: true
+      - host:
+          iptables: true
+          interface: eni+
+      - extraArgs:
+          auto-discover-base-arn: ""
+          auto-discover-default-role: true
+      - image:
+          # I'm waiting for https://github.com/jtblin/kube2iam/issues/178
+          tag: 0.10.4
+  # - name: alb-ingress-controller
+  #   namespace: kube-system
+  #   chart: incubator/aws-alb-ingress-controller
+  #   version: 0.1.4
+  #   values:
+  #     - rbac:
+  #         create: true
+  #     - clusterName: external-stg
+  #     - awsRegion: ap-northeast-1
+  #     - awsVpcID: vpc-02eaf58452e066775
+  #     - podAnnotations:
+  #         iam.amazonaws.com/role: alb-ingress-controller-role
+  #     - image:
+  #         tag: v1.1.1
