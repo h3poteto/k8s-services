@@ -25,11 +25,19 @@ spec:
         paths:
           - path: /*
             backend:
+              serviceName: ssl-redirect
+              servicePort: use-annotation
+          - path: /*
+            backend:
               serviceName: fascia-service
               servicePort: 80
     - host: whalebird.org
       http:
         paths:
+          - path: /*
+            backend:
+              serviceName: ssl-redirect
+              servicePort: use-annotation
           - path: /*
             backend:
               serviceName: whalebirdorg-service
@@ -39,6 +47,10 @@ spec:
         paths:
           - path: /*
             backend:
+              serviceName: ssl-redirect
+              servicePort: use-annotation
+          - path: /*
+            backend:
               serviceName: pleromaio-service
               servicePort: 80
     - host: seiyu.watch
@@ -46,11 +58,19 @@ spec:
         paths:
           - path: /*
             backend:
+              serviceName: ssl-redirect
+              servicePort: use-annotation
+          - path: /*
+            backend:
               serviceName: seiyuwatch-service
               servicePort: 80
     - host: masuda.stream
       http:
         paths:
+          - path: /*
+            backend:
+              serviceName: ssl-redirect
+              servicePort: use-annotation
           - path: /*
             backend:
               serviceName: masudastream-service
