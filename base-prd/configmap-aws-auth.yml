@@ -7,7 +7,7 @@ metadata:
     k8s-app: aws-iam-authenticator
 data:
   config.yaml: |
-    clusterID: external-prd.cluster.k8s.local
+    clusterID: base-prd.cluster.k8s.local
     server:
       # each mapRoles entry maps an IAM role to a username and set of groups
       # Each username and group can optionally contain template parameters:
