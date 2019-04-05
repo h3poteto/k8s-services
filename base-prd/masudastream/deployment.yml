@@ -36,4 +36,24 @@ spec:
             requests:
               memory: 300
               cpu: 333m
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 20
+            successThreshold: 1
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /
+              port: 8000
+            initialDelaySeconds: 60
+            periodSeconds: 60
+            timeoutSeconds: 20
+            successThreshold: 1
+            failureThreshold: 3
       terminationGracePeriodSeconds: 60
