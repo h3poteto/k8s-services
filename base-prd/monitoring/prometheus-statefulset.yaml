@@ -47,13 +47,25 @@ spec:
             - "--storage.tsdb.path=/prometheus/"
           ports:
             - containerPort: 9090
+          readinessProbe:
+            httpGet:
+              path: /-/ready
+              port: 9090
+            initialDelaySeconds: 30
+            timeoutSeconds: 30
+          livenessProbe:
+            httpGet:
+              path: /-/healthy
+              port: 9090
+            initialDelaySeconds: 30
+            timeoutSeconds: 30
           resources:
             limits:
               cpu: 200m
-              memory: 500Mi
+              memory: 1000Mi
             requests:
               cpu: 200m
-              memory: 500Mi
+              memory: 1000Mi
       terminationGracePeriodSeconds: 300
   volumeClaimTemplates:
   - metadata:

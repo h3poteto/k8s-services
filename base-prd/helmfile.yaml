@@ -33,16 +33,46 @@ releases:
           iam.amazonaws.com/role: alb-ingress-controller-role
       - image:
           tag: v1.1.1
-  - name: metrics-server
-    namespace: kube-system
-    chart: stable/metrics-server
-    version: 2.5.1
+  - name: prometheus-node-exporter
+    namespace: monitoring
+    chart: stable/prometheus-node-exporter
+    version: 1.4.2
     values:
       - rbac:
           create: true
           pspEnabled: true
-      - serviceAccount:
+      - podLabels:
+          prometheus.io/scrape: 'true'
+          prometheus.io/port: '9100'
+      - service:
+          type: ClusterIP
+          port: 9100
+  - name: kube-state-metrics
+    namespace: monitoring
+    chart: stable/kube-state-metrics
+    version: 1.2.0
+    values:
+      - rbac:
           create: true
-      - image:
-          tag: v0.3.1
-      - args: ["--kubelet-insecure-tls"]
+      - service:
+          port: 8080
+      - podAnnotations:
+          prometheus.io/scrape: 'true'
+          prometheus.io/port: '8080'
+  # Note: Now I don't use metrics-server,
+  # because it only use horizontal pod autoscale.
+  # In monitoring, it is not useful, because it is not support prometheus endpoint.
+  # - name: metrics-server
+  #   namespace: kube-system
+  #   chart: stable/metrics-server
+  #   version: 2.5.1
+  #   values:
+  #     - rbac:
+  #         create: true
+  #         pspEnabled: true
+  #     - serviceAccount:
+  #         create: true
+  #     - image:
+  #         tag: v0.3.1
+  #     - args: ["--kubelet-insecure-tls"]
+
