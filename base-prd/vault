@@ -1,0 +1,27 @@
+#!/bin/bash
+
+function enc {
+    bundle exec yaml_vault encrypt $1 -o $2 --cryptor=aws-kms --aws-kms-key-id=803db205-6479-4a08-8a08-eddbfc2e2925
+}
+
+function dec {
+    bundle exec yaml_vault decrypt $1 -o $2 --cryptor=aws-kms
+}
+
+if [ $# -ne 3 ]; then
+    echo "vault (encrypt|decrypt) input_file output_file"
+    exit 1
+fi
+
+case "$1" in
+    encrypt)
+        enc $2 $3
+        ;;
+    decrypt)
+        dec $2 $3
+        ;;
+    *)
+        echo "vault (encrypt|decrypt) input_file output_file"
+        exit 1
+        ;;
+esac
