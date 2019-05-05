@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: prometheus-statefulset
+  namespace: monitoring
+  labels:
+    app: prometheus-server
+spec:
+  serviceName: "prometheus"
+  replicas: 1
+  podManagementPolicy: "Parallel"
+  updateStrategy:
+    type: "RollingUpdate"
+  selector:
+    matchLabels:
+      app: prometheus-server
+  template:
+    metadata:
+      labels:
+        app: prometheus-server
+    spec:
+      serviceAccountName: prometheus
+      volumes:
+        - name: prometheus-config
+          configMap:
+            name: prometheus-server-conf
+      initContainers:
+        - name: "init-chown-data"
+          image: "busybox:latest"
+          imagePullPolicy: "IfNotPresent"
+          command: ["chown", "-R", "65534:65534", "/prometheus"]
+          volumeMounts:
+            - name: prometheus-data
+              mountPath: /prometheus
+              subPath: ""
+      containers:
+        - name: prometheus
+          image: prom/prometheus:latest
+          volumeMounts:
+            - name: prometheus-config
+              mountPath: /etc/prometheus/config
+            - name: prometheus-data
+              mountPath: /prometheus
+              subPath: ""
+          args:
+            - "--config.file=/etc/prometheus/config/prometheus.yml"
+            - "--storage.tsdb.path=/prometheus/"
+          ports:
+            - containerPort: 9090
+          readinessProbe:
+            httpGet:
+              path: /-/ready
+              port: 9090
+            initialDelaySeconds: 30
+            timeoutSeconds: 30
+          livenessProbe:
+            httpGet:
+              path: /-/healthy
+              port: 9090
+            initialDelaySeconds: 30
+            timeoutSeconds: 30
+          resources:
+            limits:
+              cpu: 200m
+              memory: 1000Mi
+            requests:
+              cpu: 200m
+              memory: 1000Mi
+      terminationGracePeriodSeconds: 300
+  volumeClaimTemplates:
+  - metadata:
+      name: prometheus-data
+    spec:
+      storageClassName: gp2
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: "16Gi"
