@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-conf
+  namespace: web-public
+  labels:
+    name: grafana-conf
+data:
+  GF_DATABASE_NAME: grafana
+  GF_DATABASE_TYPE: mysql
