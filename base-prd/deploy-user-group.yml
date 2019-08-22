@@ -5,14 +5,14 @@ metadata:
   namespace: web-public
 rules:
 - apiGroups: [""]
-  verbs: ["get", "list"]
+  verbs: ["get", "list", "delete", "deletecollection"]
   resources: ["pods", "pods/log"]
-- apiGroups: ["extensions", "apps"]
-  verbs: ["get", "list", "update", "patch"]
-  resources: ["deployments", "replicasets"]
 - apiGroups: ["batch"]
   verbs: ["create", "get", "delete"]
   resources: ["jobs", "jobs/status"]
+- apiGroups: ["extensions", "apps"]
+  verbs: ["get", "list", "update", "patch"]
+  resources: ["deployments", "replicasets"]
 
 ---
 
