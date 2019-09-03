@@ -22,4 +22,4 @@ spec:
           - name: SERVICE_ENV
             value: prd
       restartPolicy: Never
-  backoffLimit: 2
+  backoffLimit: 0
