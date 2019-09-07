@@ -4,6 +4,8 @@ metadata:
   name: web-public
   labels:
     name: web-public
+  annotations:
+    iam.amazonaws.com/permitted: ".*"
 ---
 apiVersion: v1
 kind: Namespace
@@ -11,3 +13,5 @@ metadata:
   name: monitoring
   labels:
     name: monitoring
+  annotations:
+    iam.amazonaws.com/permitted: ".*"
