@@ -15,3 +15,12 @@ metadata:
     name: monitoring
   annotations:
     iam.amazonaws.com/permitted: ".*"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kube-system
+  labels:
+    name: kube-system
+  annotations:
+    iam.amazonaws.com/permitted: ".*"
