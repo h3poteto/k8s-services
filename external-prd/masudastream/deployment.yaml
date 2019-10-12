@@ -22,16 +22,19 @@ spec:
         app: masudastream
     spec:
       containers:
-        - name: django
+        - name: phoenix
           image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/masudastream:latest
           imagePullPolicy: Always
           ports:
             - name: http-port
-              containerPort: 8000
+              containerPort: 4000
               protocol: TCP
+          envFrom:
+            - secretRef:
+                name: masudastream-env
           env:
-            - name: SERVICE_ENV
-              value: prd
+            - name: DB_HOSTNAME
+              value: nyaruko.cju8robzjmqc.ap-northeast-1.rds.amazonaws.com
           resources:
             requests:
               memory: 300
@@ -40,7 +43,7 @@ spec:
             httpGet:
               scheme: HTTP
               path: /
-              port: 8000
+              port: 4000
             initialDelaySeconds: 30
             periodSeconds: 10
             timeoutSeconds: 20
@@ -50,7 +53,7 @@ spec:
             httpGet:
               scheme: HTTP
               path: /
-              port: 8000
+              port: 4000
             initialDelaySeconds: 60
             periodSeconds: 60
             timeoutSeconds: 20
