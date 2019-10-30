@@ -86,3 +86,12 @@ spec:
             backend:
               serviceName: grafana-service
               servicePort: 3000
+    # For health check from route53
+    # Route53 health check can't specify host header
+    # so, it can't access host based routing ALB.
+    - http:
+        paths:
+          - path: /pleroma/*
+            backend:
+              serviceName: pleromaio-service
+              servicePort: 80
