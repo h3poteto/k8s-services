@@ -19,7 +19,12 @@ spec:
         imagePullPolicy: Always
         args: ["env"]
         env:
-          - name: SERVICE_ENV
-            value: prd
+          - name: POSTGRES_HOST
+            value: nyaruko.cju8robzjmqc.ap-northeast-1.rds.amazonaws.com
+          - name: POSTGRES_DB
+            value: fascia
+        envFrom:
+          - secretRef:
+              name: fascia-env
       restartPolicy: Never
   backoffLimit: 0
