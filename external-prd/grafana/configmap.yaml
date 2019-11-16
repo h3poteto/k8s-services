@@ -7,4 +7,5 @@ metadata:
     name: grafana-conf
 data:
   GF_DATABASE_NAME: grafana
-  GF_DATABASE_TYPE: mysql
+  GF_DATABASE_TYPE: postgres
+  GF_DATABASE_HOST: nyaruko.cju8robzjmqc.ap-northeast-1.rds.amazonaws.com:5432

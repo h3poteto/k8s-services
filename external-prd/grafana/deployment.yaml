@@ -27,3 +27,4 @@ spec:
           env:
             - name: GF_SERVER_ROOT_URL
               value: https://k8s-monitor.h3poteto.dev
+
