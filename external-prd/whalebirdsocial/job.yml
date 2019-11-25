@@ -1,17 +1,17 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: whalebirdorg-job
+  name: whalebird-job
   namespace: web-public
   labels:
-    app: whalebirdorg-job
+    app: whalebird-job
 spec:
   template:
     metadata:
       annotations:
-        iam.amazonaws.com/role: whalebirdorg-prd-pod-role
+        iam.amazonaws.com/role: whalebirdsocial-prd-pod-role
       labels:
-        app: whalebirdorg-job
+        app: whalebird-job
     spec:
       containers:
       - name: rails
