@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: whalebirdorg-deployment
+  name: whalebird-deployment
   namespace: web-public
   labels:
-    app: whalebirdorg
+    app: whalebird
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: whalebirdorg
+      app: whalebird
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -17,9 +17,9 @@ spec:
   template:
     metadata:
       annotations:
-        iam.amazonaws.com/role: whalebirdorg-prd-pod-role
+        iam.amazonaws.com/role: whalebirdsocial-prd-pod-role
       labels:
-        app: whalebirdorg
+        app: whalebird
     spec:
       containers:
         - name: rails
