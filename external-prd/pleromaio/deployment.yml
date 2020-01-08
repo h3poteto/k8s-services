@@ -34,8 +34,10 @@ spec:
               value: prd
           resources:
             requests:
-              memory: 450
+              memory: 1800Mi
               cpu: 950m
+            limits:
+              memory: 1800Mi
           readinessProbe:
             httpGet:
               scheme: HTTP
@@ -70,8 +72,10 @@ spec:
               value: "4000"
           resources:
             requests:
-              memory: 50
+              memory: 100Mi
               cpu: 50m
+            limits:
+              memory: 100Mi
           readinessProbe:
             httpGet:
               scheme: HTTP
