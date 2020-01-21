@@ -1,0 +1,36 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pgrepack-job
+  namespace: maintenance
+  labels:
+    app: pgrepack
+spec:
+  template:
+    metadata:
+      labels:
+        app: pgrepack
+    spec:
+      volumes:
+        - name: pgpass
+          configMap:
+            name: prepare-pgpass
+            defaultMode: 0777
+      containers:
+        - name: pgrepack
+          image: h3poteto/pg_repack:latest
+          imagePullPolicy: Always
+          command: ["/var/opt/script/generate_pgpass.sh"]
+          args: ["pg_repack", "--dry-run", "-h", "$(DB_HOST)", "-U", "$(DB_USER)", "-k", "-d", "pleroma", "-t", "users"]
+          envFrom:
+            - secretRef:
+                name: db-env
+          volumeMounts:
+            - name: pgpass
+              mountPath: /var/opt/script
+          resources:
+            requests:
+              memory: 500Mi
+              cpu: 500m
+      restartPolicy: Never
+  backoffLimit: 0
