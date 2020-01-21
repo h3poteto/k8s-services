@@ -24,3 +24,12 @@ metadata:
     name: kube-system
   annotations:
     iam.amazonaws.com/permitted: ".*"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: maintenance
+  labels:
+    name: maintenance
+  annotations:
+    iam.amazonaws.com/permitted: ".*"
