@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pleromaio-env
+  namespace: web-public
+data:
+  RELX_REPLACE_OS_VARS: "true"
+  AWS_DEFAULT_REGION: ap-northeast-1
+  DB_NAME: pleroma
+  DB_HOST: nyaruko.cju8robzjmqc.ap-northeast-1.rds.amazonaws.com
+  S3_BUCKET: media.pleroma.io

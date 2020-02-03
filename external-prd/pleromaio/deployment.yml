@@ -29,9 +29,11 @@ spec:
             - name: phoenix-port
               containerPort: 4000
               protocol: TCP
-          env:
-            - name: SERVICE_ENV
-              value: prd
+          envFrom:
+            - configMapRef:
+                name: pleromaio-env
+            - secretRef:
+                name: pleromaio-env
           resources:
             requests:
               memory: 1800Mi
