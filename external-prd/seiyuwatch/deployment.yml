@@ -32,6 +32,11 @@ spec:
           env:
             - name: SERVICE_ENV
               value: prd
+          envFrom:
+            - configMapRef:
+                name: seiyuwatch-env
+            - secretRef:
+                name: seiyuwatch-env
           resources:
             requests:
               memory: 300
