@@ -29,9 +29,6 @@ spec:
             - name: http-port
               containerPort: 8080
               protocol: TCP
-          env:
-            - name: SERVICE_ENV
-              value: prd
           envFrom:
             - configMapRef:
                 name: seiyuwatch-env
