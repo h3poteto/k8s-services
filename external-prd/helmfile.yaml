@@ -3,6 +3,8 @@ repositories:
     url: http://storage.googleapis.com/kubernetes-charts-incubator
   - name: uswitch
     url: https://uswitch.github.io/kiam-helm-charts/charts/
+  - name: h3poteto-stable
+    url: https://h3poteto.github.io/charts/stable
 
 releases:
   - name: alb-ingress-controller
@@ -48,7 +50,7 @@ releases:
   - name: kiam
     namespace: kube-system
     chart: uswitch/kiam
-    version: 3.0.0
+    version: 5.7.0
     values:
       - agent:
           host:
@@ -69,11 +71,16 @@ releases:
               effect: "NoSchedule"
               operator: "Exists"
           # https://github.com/uswitch/kiam/blob/v3.3/deploy/server.yaml#L28-L31
-          extraHostPathMounts:
-            - name: ssl-certs
-              hostPath: /etc/ssl/certs
-              mountPath: /etc/ssl/certs
-              readOnly: true
+          sslCertHostPath: /etc/ssl/certs
+  # - name: kms-secrets
+  #   namespace: kube-system
+  #   chart: h3poteto-stable/kms-secrets
+  #   version: 0.1.2
+  #   values:
+  #     - rbac:
+  #         create: true
+  #     - podAnnotations:
+  #         iam.amazonaws.com/role: kms-secrets-role
   # Note: Now I don't use metrics-server,
   # because it only use horizontal pod autoscale.
   # In monitoring, it is not useful, because it is not support prometheus endpoint.
