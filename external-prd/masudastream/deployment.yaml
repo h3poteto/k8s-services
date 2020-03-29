@@ -16,8 +16,6 @@ spec:
       maxUnavailable: 0
   template:
     metadata:
-      annotations:
-        iam.amazonaws.com/role: masudastream-prd-pod-role
       labels:
         app: masudastream
     spec:
