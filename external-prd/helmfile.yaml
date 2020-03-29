@@ -1,6 +1,8 @@
 repositories:
+  - name: stable
+    url: https://kubernetes-charts.storage.googleapis.com
   - name: incubator
-    url: http://storage.googleapis.com/kubernetes-charts-incubator
+    url: https://kubernetes-charts-incubator.storage.googleapis.com
   - name: uswitch
     url: https://uswitch.github.io/kiam-helm-charts/charts/
   - name: h3poteto-stable
@@ -10,21 +12,21 @@ releases:
   - name: alb-ingress-controller
     namespace: kube-system
     chart: incubator/aws-alb-ingress-controller
-    version: 0.1.10
+    version: 0.1.14
     values:
       - rbac:
           create: true
-      - clusterName: base-prd
+      - clusterName: external-prd-20200329
       - awsRegion: ap-northeast-1
       - awsVpcID: vpc-fb354b9c
       - podAnnotations:
           iam.amazonaws.com/role: alb-ingress-controller-role
       - image:
-          tag: v1.1.2
+          tag: v1.1.6
   - name: prometheus-node-exporter
     namespace: monitoring
     chart: stable/prometheus-node-exporter
-    version: 1.6.0
+    version: 1.9.1
     values:
       - rbac:
           create: true
@@ -38,7 +40,7 @@ releases:
   - name: kube-state-metrics
     namespace: monitoring
     chart: stable/kube-state-metrics
-    version: 2.3.1
+    version: 2.8.2
     values:
       - rbac:
           create: true
