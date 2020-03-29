@@ -8,8 +8,6 @@ metadata:
 spec:
   template:
     metadata:
-      annotations:
-        iam.amazonaws.com/role: whalebirdsocial-prd-pod-role
       labels:
         app: whalebird-job
     spec:

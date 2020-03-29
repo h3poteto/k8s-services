@@ -8,8 +8,6 @@ metadata:
 spec:
   template:
     metadata:
-      annotations:
-        iam.amazonaws.com/role: fascia-prd-pod-role
       labels:
         app: fascia-job
     spec:
