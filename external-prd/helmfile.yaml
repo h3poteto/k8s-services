@@ -16,6 +16,8 @@ releases:
     values:
       - rbac:
           create: true
+          serviceAccountAnnotations:
+            eks.amazonaws.com/role-arn: arn:aws:iam::564677439943:role/alb-ingress-controller-role
       - clusterName: external-prd-20200329
       - awsRegion: ap-northeast-1
       - awsVpcID: vpc-fb354b9c
@@ -56,7 +58,7 @@ releases:
     values:
       - agent:
           host:
-            # iptables: true
+            iptables: true
             interface: "!eth0"
           extraHostPathMounts:
             - name: ssl-certs
@@ -74,15 +76,16 @@ releases:
               operator: "Exists"
           # https://github.com/uswitch/kiam/blob/v3.3/deploy/server.yaml#L28-L31
           sslCertHostPath: /etc/ssl/certs
-  # - name: kms-secrets
-  #   namespace: kube-system
-  #   chart: h3poteto-stable/kms-secrets
-  #   version: 0.1.2
-  #   values:
-  #     - rbac:
-  #         create: true
-  #     - podAnnotations:
-  #         iam.amazonaws.com/role: kms-secrets-role
+  - name: kms-secrets
+    namespace: kube-system
+    chart: h3poteto-stable/kms-secrets
+    version: 0.1.2
+    values:
+      - rbac:
+          create: true
+          serviceAccount:
+            annotations:
+              eks.amazonaws.com/role-arn: arn:aws:iam::564677439943:role/kms-secrets-role
   # Note: Now I don't use metrics-server,
   # because it only use horizontal pod autoscale.
   # In monitoring, it is not useful, because it is not support prometheus endpoint.
