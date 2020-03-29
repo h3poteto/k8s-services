@@ -30,8 +30,15 @@ spec:
               containerPort: 3000
               protocol: TCP
           env:
-            - name: SERVICE_ENV
-              value: prd
+            - name: RAILS_SERVE_STATIC_FILES
+              value: "true"
+            - name: RAILS_LOG_TO_STDOUT
+              value: "true"
+            - name: PORT
+              value: "3000"
+          envFrom:
+            - secretRef:
+                name: whalebirdsocial-env
           resources:
             requests:
               memory: 400
