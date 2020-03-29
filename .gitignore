@@ -1,3 +1,5 @@
-secret.yml
-secret.yaml
 vendor/
+*secret.yml
+*secret.yaml
+!encrypted*.yml
+!encrypted*.yaml
