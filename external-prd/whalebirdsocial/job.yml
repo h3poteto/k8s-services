@@ -18,8 +18,8 @@ spec:
         image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/whalebirdsocial:latest
         imagePullPolicy: Always
         args: ["env"]
-        env:
-          - name: SERVICE_ENV
-            value: prd
+        envFrom:
+          - secretRef:
+              name: whalebirdsocial-env
       restartPolicy: Never
   backoffLimit: 0
