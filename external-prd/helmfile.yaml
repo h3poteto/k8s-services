@@ -3,8 +3,6 @@ repositories:
     url: https://kubernetes-charts.storage.googleapis.com
   - name: incubator
     url: https://kubernetes-charts-incubator.storage.googleapis.com
-  - name: uswitch
-    url: https://uswitch.github.io/kiam-helm-charts/charts/
   - name: h3poteto-stable
     url: https://h3poteto.github.io/charts/stable
 
@@ -51,31 +49,22 @@ releases:
       - podAnnotations:
           prometheus.io/scrape: 'true'
           prometheus.io/port: '8080'
-  - name: kiam
+  - name: kube2iam
     namespace: kube-system
-    chart: uswitch/kiam
-    version: 5.7.0
+    chart: stable/kube2iam
+    version: 2.1.0
     values:
-      - agent:
-          host:
-            iptables: true
-            interface: "!eth0"
-          extraHostPathMounts:
-            - name: ssl-certs
-              hostPath: /etc/ssl/certs
-              mountPath: /etc/ssl/certs
-              readOnly: true
-      - server:
-          assumeRoleArn: arn:aws:iam::564677439943:role/kiam-master-role
-          nodeSelector:
-            kubernetes.io/role: master
-          # https://github.com/uswitch/kiam/blob/v3.3/deploy/server.yaml#L20-L24
-          tolerations:
-            - key: "node-role.kubernetes.io/master"
-              effect: "NoSchedule"
-              operator: "Exists"
-          # https://github.com/uswitch/kiam/blob/v3.3/deploy/server.yaml#L28-L31
-          sslCertHostPath: /etc/ssl/certs
+      - rbac:
+          create: true
+      - host:
+          iptables: true
+          interface: eni+
+      - extraArgs:
+          auto-discover-base-arn: ""
+          auto-discover-default-role: true
+      - image:
+          # I'm waiting for https://github.com/jtblin/kube2iam/issues/178
+          tag: 0.10.9
   - name: kms-secrets
     namespace: kube-system
     chart: h3poteto-stable/kms-secrets
