@@ -49,22 +49,6 @@ releases:
       - podAnnotations:
           prometheus.io/scrape: 'true'
           prometheus.io/port: '8080'
-  - name: kube2iam
-    namespace: kube-system
-    chart: stable/kube2iam
-    version: 2.1.0
-    values:
-      - rbac:
-          create: true
-      - host:
-          iptables: true
-          interface: eni+
-      - extraArgs:
-          auto-discover-base-arn: ""
-          auto-discover-default-role: true
-      - image:
-          # I'm waiting for https://github.com/jtblin/kube2iam/issues/178
-          tag: 0.10.9
   - name: kms-secrets
     namespace: kube-system
     chart: h3poteto-stable/kms-secrets
