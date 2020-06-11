@@ -23,32 +23,33 @@ releases:
           iam.amazonaws.com/role: alb-ingress-controller-role
       - image:
           tag: v1.1.6
-  - name: prometheus-node-exporter
-    namespace: monitoring
-    chart: stable/prometheus-node-exporter
-    version: 1.9.1
-    values:
-      - rbac:
-          create: true
-          pspEnabled: true
-      - podLabels:
-          prometheus.io/scrape: 'true'
-          prometheus.io/port: '9100'
-      - service:
-          type: ClusterIP
-          port: 9100
-  - name: kube-state-metrics
-    namespace: monitoring
-    chart: stable/kube-state-metrics
-    version: 2.8.2
-    values:
-      - rbac:
-          create: true
-      - service:
-          port: 8080
-      - podAnnotations:
-          prometheus.io/scrape: 'true'
-          prometheus.io/port: '8080'
+  # Now I'm using datadog instead of prometheus and grafana
+  # - name: prometheus-node-exporter
+  #   namespace: monitoring
+  #   chart: stable/prometheus-node-exporter
+  #   version: 1.9.1
+  #   values:
+  #     - rbac:
+  #         create: true
+  #         pspEnabled: true
+  #     - podLabels:
+  #         prometheus.io/scrape: 'true'
+  #         prometheus.io/port: '9100'
+  #     - service:
+  #         type: ClusterIP
+  #         port: 9100
+  # - name: kube-state-metrics
+  #   namespace: monitoring
+  #   chart: stable/kube-state-metrics
+  #   version: 2.8.2
+  #   values:
+  #     - rbac:
+  #         create: true
+  #     - service:
+  #         port: 8080
+  #     - podAnnotations:
+  #         prometheus.io/scrape: 'true'
+  #         prometheus.io/port: '8080'
   - name: kms-secrets
     namespace: kube-system
     chart: h3poteto-stable/kms-secrets
@@ -59,6 +60,25 @@ releases:
           serviceAccount:
             annotations:
               eks.amazonaws.com/role-arn: arn:aws:iam::564677439943:role/kms-secrets-role
+  - name: datadog
+    namespace: kube-system
+    chart: stable/datadog
+    version: 2.3.9
+    values:
+      - agents:
+          rbac:
+            create: true
+          useHostNetwork: true
+      - clusterAgent:
+          enabled: true
+          rbac:
+            create: true
+          metricsProvider:
+            enabled: true
+      - datadog:
+          apiKey: ref+awssecrets://prod/Datadog#/api_key
+          appKey: ref+awssecrets://prod/Datadog#/app_key
+          collectEvents: true
   # Note: Now I don't use metrics-server,
   # because it only use horizontal pod autoscale.
   # In monitoring, it is not useful, because it is not support prometheus endpoint.
