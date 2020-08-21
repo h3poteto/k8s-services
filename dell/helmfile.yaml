@@ -1,0 +1,46 @@
+repositories:
+  - name: stable
+    url: https://kubernetes-charts.storage.googleapis.com
+  - name: incubator
+    url: https://kubernetes-charts-incubator.storage.googleapis.com
+  - name: argo
+    url: https://argoproj.github.io/argo-helm
+  - name: ingress-nginx
+    url: https://kubernetes.github.io/ingress-nginx
+
+releases:
+  - name: nginx-ingress
+    namespace: ingress-nginx
+    chart: ingress-nginx/ingress-nginx
+    version: 2.11.3
+    values:
+      - rbac:
+          create: true
+      - controller:
+          publishService:
+            enabled: true
+          # https://github.com/kubernetes/ingress-nginx/issues/5401
+          # https://stackoverflow.com/questions/61365202/nginx-ingress-service-ingress-nginx-controller-admission-not-found
+          admissionWebhooks:
+            enabled: false
+          service:
+            type: NodePort
+            externalTrafficPolicy: Cluster
+            targetPorts:
+              http: http
+              https: https
+  - name: argocd
+    namespace: argo
+    chart: argo/argo-cd
+    version: 2.6.0
+    values:
+      - installCRDs: false
+      - server:
+          extraArgs:
+            - --insecure
+          ingress:
+            enabled: true
+            hosts:
+              - argocd.h3poteto.dev.local
+            annotations:
+              kubernetes.io/ingress.class: nginx
