@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: phoenix
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/masudastream:latest
+          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/masudastream:6a92dbec9af55a878567b3bedd60fce7627cde9b
           imagePullPolicy: Always
           ports:
             - name: http-port
