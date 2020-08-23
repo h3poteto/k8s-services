@@ -1,10 +1,12 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: whalebird-job
+  name: whalebird-db-migration
   namespace: web-public
   labels:
     app: whalebird-job
+  annotations:
+    argocd.argoproj.io/hook: PreSync
 spec:
   template:
     metadata:
@@ -15,7 +17,7 @@ spec:
       - name: rails
         image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/whalebirdsocial:latest
         imagePullPolicy: Always
-        args: ["env"]
+        args: ["bundle", "exec", "rake", "db:migrate"]
         envFrom:
           - secretRef:
               name: whalebirdsocial-env
