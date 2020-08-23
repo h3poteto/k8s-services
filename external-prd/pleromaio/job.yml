@@ -5,6 +5,8 @@ metadata:
   namespace: web-public
   labels:
     app: pleromaio-job
+  annotations:
+    argocd.argoproj.io/hook: PreSync
 spec:
   template:
     metadata:
