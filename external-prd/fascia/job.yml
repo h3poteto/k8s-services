@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: fascia
-        image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fascia:b9ac1a087ba6af4789b347907ddd58fb44ee1c2b
+        image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fascia:e4a550f0d48510f49d5fd068bda6cf405fa60434
         imagePullPolicy: Always
         args: ["goose", "-env", "production", "up"]
         env:
