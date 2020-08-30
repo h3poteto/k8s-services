@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: rails
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/whalebirdsocial:6cf2227cc047d38671119591b9b7327dc4c36a12
+          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/whalebirdsocial:c0b6eb739396e58653d7e8deed8916e1b9712a1b
           imagePullPolicy: Always
           ports:
             - name: http-port
