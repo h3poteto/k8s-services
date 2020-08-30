@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: rails
-        image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/whalebirdsocial:6cf2227cc047d38671119591b9b7327dc4c36a12
+        image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/whalebirdsocial:b9b1da9e017b67cddf830933ce2cb61e578339bb
         imagePullPolicy: Always
         args: ["bundle", "exec", "rake", "db:migrate"]
         envFrom:
