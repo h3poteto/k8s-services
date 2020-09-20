@@ -4,3 +4,10 @@ metadata:
   name: argo
   labels:
     name: argo
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: metallb
+  labels:
+    name: metallb

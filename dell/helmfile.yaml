@@ -7,6 +7,8 @@ repositories:
     url: https://argoproj.github.io/argo-helm
   - name: ingress-nginx
     url: https://kubernetes.github.io/ingress-nginx
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
 
 releases:
   - name: nginx-ingress
@@ -24,8 +26,8 @@ releases:
           admissionWebhooks:
             enabled: false
           service:
-            type: NodePort
-            externalTrafficPolicy: Cluster
+            type: LoadBalancer
+            externalTrafficPolicy: Local
             targetPorts:
               http: http
               https: https
@@ -44,3 +46,25 @@ releases:
               - argocd.h3poteto.dev.local
             annotations:
               kubernetes.io/ingress.class: nginx
+  - name: metallb
+    namespace: metallb
+    chart: bitnami/metallb
+    version: 0.1.23
+    values:
+      - rbac:
+          create: true
+      - configInline:
+          address-pools:
+          - # A name for the address pool. Services can request allocation
+            # from a specific address pool using this name, by listing this
+            # name under the 'metallb.universe.tf/address-pool' annotation.
+            name: generic-cluster-pool
+            # Protocol can be used to select how the announcement is done.
+            # Supported values are bgp and layer2.
+            protocol: layer2
+            # A list of IP address ranges over which MetalLB has
+            # authority. You can list multiple ranges in a single pool, they
+            # will all share the same settings. Each range can be either a
+            # CIDR prefix, or an explicit start-end range of IPs.
+            addresses:
+              - 192.168.10.23-192.168.10.30
