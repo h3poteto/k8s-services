@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: excluded-job
+  namespace: example
+  labels:
+    app: excluded-job
+  annotations:
+    argocd.argoproj.io/exclude: "excluded"
+spec:
+  template:
+    metadata:
+      labels:
+        app: excluded-job
+    spec:
+      containers:
+        - name: busybox
+          image: busybox
+          args: ["env"]

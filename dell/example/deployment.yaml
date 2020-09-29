@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-nginx
+  namespace: example
+  labels:
+    app: example-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: example-nginx
+  strategy:
+    metadata:
+      labels:
+        app: example-nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          resources:
+            requests:
+              memory: 200
+              cpu: 100m
