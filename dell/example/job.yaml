@@ -6,7 +6,7 @@ metadata:
   labels:
     app: excluded-job
   annotations:
-    argocd.argoproj.io/exclude: "excluded"
+    argocd-exclude: "excluded"
 spec:
   template:
     metadata:
