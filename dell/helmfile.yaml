@@ -39,6 +39,7 @@ releases:
       - installCRDs: false
       - global:
           image:
+            imagePullPolicy: "Always"
             repository: "ghcr.io/h3poteto/argo-cd"
             tag: "latest"
       - server:
@@ -58,7 +59,7 @@ releases:
                   - "*"
                 kinds:
                   - "*"
-                labels:
+                annotations:
                   - argocd-exclude: excluded
   - name: metallb
     namespace: metallb
