@@ -37,6 +37,10 @@ releases:
     version: 2.6.0
     values:
       - installCRDs: false
+      - global:
+          image:
+            repository: "ghcr.io/h3poteto/argo-cd"
+            tag: "latest"
       - server:
           extraArgs:
             - --insecure

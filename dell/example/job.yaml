@@ -5,7 +5,6 @@ metadata:
   namespace: example
   labels:
     app: excluded-job
-  annotations:
     argocd-exclude: "excluded"
 spec:
   template:
