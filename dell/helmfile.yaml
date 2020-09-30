@@ -46,6 +46,16 @@ releases:
               - argocd.h3poteto.dev.local
             annotations:
               kubernetes.io/ingress.class: nginx
+          config:
+            url: https://argocd.h3poteto.dev.local
+            application.instanceLabelKey: argocd.argoproj.io/instance
+            resource.exclusions: |
+              - apiGroups:
+                  - "*"
+                kinds:
+                  - "*"
+                labels:
+                  - argocd-exclude: excluded
   - name: metallb
     namespace: metallb
     chart: bitnami/metallb
