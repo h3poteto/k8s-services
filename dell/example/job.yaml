@@ -16,3 +16,4 @@ spec:
         - name: busybox
           image: busybox
           args: ["env"]
+      restartPolicy: Never

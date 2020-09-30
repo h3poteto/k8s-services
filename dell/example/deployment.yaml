@@ -10,7 +10,7 @@ spec:
   selector:
     matchLabels:
       app: example-nginx
-  strategy:
+  template:
     metadata:
       labels:
         app: example-nginx
