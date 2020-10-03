@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: phoenix
-        image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/seiyuwatch:ff66aac91446f1b9ead199ba776a969cf9a8ff6e
+        image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/seiyuwatch:857bad6ea858303985d3f38c1d760c991e8f5b7f
         imagePullPolicy: Always
         args: ["mix", "ecto.migrate"]
         envFrom:
