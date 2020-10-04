@@ -18,7 +18,7 @@ spec:
         fsGroup: 1000
       containers:
       - name: phoenix
-        image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/pleroma/phoenix:cbccffa6a6a52cb113c8773f6c20ca13b696ab86
+        image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/pleroma/phoenix:2cd055fe0aeb012c2429c8f979ddee9552495273
         imagePullPolicy: Always
         args: ["mix", "ecto.migrate"]
         envFrom:
