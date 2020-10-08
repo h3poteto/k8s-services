@@ -6,6 +6,9 @@ metadata:
   labels:
     app: excluded-job
   annotations:
+    argocd.argoproj.io/hook: Skip
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: Prune=false
     argocd-exclude: "excluded"
 spec:
   template:
