@@ -24,7 +24,7 @@ spec:
         fsGroup: 1000
       initContainers:
         - name: phoenix
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/pleroma/phoenix:9880ed8a8a60a832622ec36437c5592317c3b085
+          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/pleroma/phoenix:082d62ffdfccbe3900cdcf2811398389499cbe3c
           imagePullPolicy: Always
           args: ["mix", "ecto.migrate"]
           envFrom:
@@ -34,7 +34,7 @@ spec:
                 name: pleromaio-env
       containers:
         - name: phoenix
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/pleroma/phoenix:9880ed8a8a60a832622ec36437c5592317c3b085
+          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/pleroma/phoenix:082d62ffdfccbe3900cdcf2811398389499cbe3c
           imagePullPolicy: Always
           ports:
             - name: phoenix-port
@@ -72,7 +72,7 @@ spec:
             successThreshold: 1
             failureThreshold: 3
         - name: nginx
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/pleroma/nginx:9880ed8a8a60a832622ec36437c5592317c3b085
+          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/pleroma/nginx:082d62ffdfccbe3900cdcf2811398389499cbe3c
           imagePullPolicy: Always
           ports:
             - name: http-port
