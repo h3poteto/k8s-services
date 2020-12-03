@@ -1,0 +1,78 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluentd-config
+  namespace: logging
+data:
+  fluent.conf: |
+    <source>
+      @type  forward
+      @id    input1
+      @label @mainstream
+      port  24224
+      bind 0.0.0.0
+    </source>
+
+    <filter **>
+      @type stdout
+    </filter>
+
+    <label @mainstream>
+      <match docker.**>
+        @type file
+        @id   output_docker1
+        path         /fluentd/log/docker.*.log
+        symlink_path /fluentd/log/docker.log
+        append       true
+        time_slice_format %Y%m%d
+        time_slice_wait   1m
+        time_format       %Y%m%dT%H%M%S%z
+      </match>
+      <match **>
+        @type file
+        @id   output1
+        path         /fluentd/log/data.*.log
+        symlink_path /fluentd/log/data.log
+        append       true
+        time_slice_format %Y%m%d
+        time_slice_wait   10m
+        time_format       %Y%m%dT%H%M%S%z
+      </match>
+    </label>
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fluentd-aggregator
+  namespace: logging
+  labels:
+    logging-app: aggregator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      logging-app: aggregator
+  template:
+    metadata:
+      labels:
+        logging-app: aggregator
+    spec:
+      volumes:
+        - name: config
+          configMap:
+            name: fluentd-config
+      containers:
+        - name: fluentd
+          image: fluent/fluentd:v1.11-1
+          ports:
+            - name: fwd-input-tcp
+              containerPort: 24224
+              protocol: TCP
+            - name: fwd-input-udp
+              containerPort: 24224
+              protocol: UDP
+          volumeMounts:
+            - name: config
+              mountPath: /fluentd/etc/
+              readOnly: true

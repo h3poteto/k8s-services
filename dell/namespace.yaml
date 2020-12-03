@@ -18,4 +18,10 @@ metadata:
   name: example
   labels:
     name: example
-
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: logging
+  labels:
+    name: logging
