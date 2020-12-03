@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-nginx
+  namespace: example
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      example-app: nginx
+  template:
+    metadata:
+      labels:
+        example-app: nginx
+      annotations:
+        fluentd-sidecar-injector.h3poteto.dev/injection: 'enabled'
+        fluentd-sidecar-injector.h3poteto.dev/application-log-dir: '/var/log/nginx'
+        fluentd-sidecar-injector.h3poteto.dev/aggregator-host: 'fluentd-aggregator.logging.svc.cluster.local'
+        fluentd-sidecar-injector.h3poteto.dev/application-port: '24224'
+        fluentd-sidecar-injector.h3poteto.dev/collector: 'fluent-bit'
+        fluentd-sidecar-injector.h3poteto.dev/tag-prefix: 'exmample'
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+
