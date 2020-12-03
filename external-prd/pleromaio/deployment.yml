@@ -23,7 +23,7 @@ spec:
       securityContext:
         fsGroup: 1000
       initContainers:
-        - name: phoenix
+        - name: migration
           image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/pleroma/phoenix:082d62ffdfccbe3900cdcf2811398389499cbe3c
           imagePullPolicy: Always
           args: ["mix", "ecto.migrate"]
