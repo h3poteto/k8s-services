@@ -19,6 +19,17 @@ spec:
       labels:
         app: masudastream
     spec:
+      initContainers:
+        - name: migration
+          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/masudastream:4191ff6ca5d3315f11540461ff7775271f4d58bf
+          imagePullPolicy: Always
+          args: ["mix", "ecto.migrate"]
+          envFrom:
+            - secretRef:
+                name: masudastream-env
+          env:
+            - name: DB_HOSTNAME
+              value: nyaruko.cju8robzjmqc.ap-northeast-1.rds.amazonaws.com
       containers:
         - name: phoenix
           image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/masudastream:4191ff6ca5d3315f11540461ff7775271f4d58bf
