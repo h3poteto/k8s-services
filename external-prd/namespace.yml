@@ -33,3 +33,12 @@ metadata:
     name: maintenance
   annotations:
     iam.amazonaws.com/permitted: ".*"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: flux-system
+  labels:
+    name: flux-system
+  annotations:
+    iam.amazonaws.com/permitted: ".*"
