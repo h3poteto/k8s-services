@@ -69,6 +69,11 @@ releases:
     chart: h3poteto-stable/node-manager
     version: 0.2.0
     values:
+      - rbac:
+          create: true
+          serviceAccount:
+            annotations:
+              eks.amazonaws.com/role-arn: arn:aws:iam::564677439943:role/node-manager-controller-role
       - nodemanager:
           aws:
             region: ap-northeast-1
