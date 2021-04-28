@@ -80,8 +80,8 @@ releases:
             masters:
               desired: 3
               asgModifyCoolTimeSeconds: 600
-              refreshSchedule: "00 15 * * 6"
-              enableReplenish: true
+              refreshSchedule: ""
+              enableReplenish: false
               autoScalingGroups:
                 - name: master-ap-northeast-1a.masters.external-prd-20210225.k8s.h3poteto.dev
                 - name: master-ap-northeast-1c.masters.external-prd-20210225.k8s.h3poteto.dev
