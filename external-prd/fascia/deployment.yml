@@ -21,7 +21,7 @@ spec:
     spec:
       initContainers:
         - name: migration
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fascia:a3d33b1d31b7c2b0224d850bf0195c3fd70fc283
+          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fascia:9ff989a1fc314a11c461eb1e116fb6710b79b7a7
           imagePullPolicy: Always
           args: ["goose", "-env", "production", "up"]
           env:
@@ -34,7 +34,7 @@ spec:
                 name: fascia-env
       containers:
         - name: go
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fascia:a3d33b1d31b7c2b0224d850bf0195c3fd70fc283
+          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fascia:9ff989a1fc314a11c461eb1e116fb6710b79b7a7
           imagePullPolicy: Always
           ports:
             - name: http-port
