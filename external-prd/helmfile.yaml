@@ -67,7 +67,7 @@ releases:
   - name: node-manager
     namespace: kube-system
     chart: h3poteto-stable/node-manager
-    version: 0.2.0
+    version: 0.2.2
     values:
       - rbac:
           create: true
@@ -80,8 +80,9 @@ releases:
             masters:
               desired: 3
               asgModifyCoolTimeSeconds: 600
-              refreshSchedule: ""
-              enableReplenish: false
+              refreshSchedule: "00 15 * * 6"
+              surplusNodes: 0
+              enableReplenish: true
               autoScalingGroups:
                 - name: master-ap-northeast-1a.masters.external-prd-20210225.k8s.h3poteto.dev
                 - name: master-ap-northeast-1c.masters.external-prd-20210225.k8s.h3poteto.dev
@@ -90,6 +91,7 @@ releases:
               desired: 3
               asgModifyCoolTimeSeconds: 600
               refreshSchedule: "00 15 * * 5"
+              surplusNodes: 1
               enableReplenish: true
               autoScalingGroups:
                 - name: nodes-ap-northeast-1a.external-prd-20210225.k8s.h3poteto.dev
