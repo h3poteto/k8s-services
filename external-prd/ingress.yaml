@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: alb-ingress
@@ -23,74 +23,113 @@ spec:
       http:
         paths:
           - path: /*
+            pathType: "Prefix"
             backend:
-              serviceName: ssl-redirect
-              servicePort: use-annotation
+              service:
+                name: ssl-redirect
+                port:
+                  name: use-annotation
           - path: /*
+            pathType: "Prefix"
             backend:
-              serviceName: fascia-service
-              servicePort: 80
+              service:
+                name: fascia-service
+                port:
+                  number: 80
     - host: whalebird.social
       http:
         paths:
           - path: /*
+            pathType: "Prefix"
             backend:
-              serviceName: ssl-redirect
-              servicePort: use-annotation
+              service:
+                name: ssl-redirect
+                port:
+                  name: use-annotation
           - path: /*
+            pathType: "Prefix"
             backend:
-              serviceName: whalebird-service
-              servicePort: 80
+              service:
+                name: whalebird-service
+                port:
+                  number: 80
     - host: pleroma.io
       http:
         paths:
           - path: /*
+            pathType: "Prefix"
             backend:
-              serviceName: ssl-redirect
-              servicePort: use-annotation
+              service:
+                name: ssl-redirect
+                port:
+                  name: use-annotation
           - path: /*
+            pathType: "Prefix"
             backend:
-              serviceName: pleromaio-service
-              servicePort: 80
+              service:
+                name: pleromaio-service
+                port:
+                  number: 80
     - host: seiyu.watch
       http:
         paths:
           - path: /*
+            pathType: "Prefix"
             backend:
-              serviceName: ssl-redirect
-              servicePort: use-annotation
+              service:
+                name: ssl-redirect
+                port:
+                  name: use-annotation
           - path: /*
+            pathType: "Prefix"
             backend:
-              serviceName: seiyuwatch-service
-              servicePort: 80
+              service:
+                name: seiyuwatch-service
+                port:
+                  number: 80
     - host: masuda.stream
       http:
         paths:
           - path: /*
+            pathType: "Prefix"
             backend:
-              serviceName: ssl-redirect
-              servicePort: use-annotation
+              service:
+                name: ssl-redirect
+                port:
+                  name: use-annotation
           - path: /*
+            pathType: "Prefix"
             backend:
-              serviceName: masudastream-service
-              servicePort: 80
+              service:
+                name: masudastream-service
+                port:
+                  number: 80
     - host: k8s-monitor.h3poteto.dev
       http:
         paths:
           - path: /*
+            pathType: "Prefix"
             backend:
-              serviceName: ssl-redirect
-              servicePort: use-annotation
+              service:
+                name: ssl-redirect
+                port:
+                  name: use-annotation
           - path: /*
+            pathType: "Prefix"
             backend:
-              serviceName: grafana-service
-              servicePort: 3000
+              service:
+                name: grafana-service
+                port:
+                  number: 3000
     # For health check from route53
     # Route53 health check can't specify host header
     # so, it can't access host based routing ALB.
     - http:
         paths:
           - path: /pleroma/*
+            pathType: "Prefix"
             backend:
-              serviceName: pleromaio-service
-              servicePort: 80
+              service:
+                name: pleromaio-service
+                port:
+                  number: 80
