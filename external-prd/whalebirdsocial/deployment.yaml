@@ -21,7 +21,7 @@ spec:
     spec:
       initContainers:
       - name: migration
-        image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/whalebirdsocial:d4ce18bb0c66590322d78223fd349b34b5c0fb31
+        image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/whalebirdsocial:364aff1401b94b1f0657a5d147fc3803587523c1
         imagePullPolicy: Always
         args: ["bundle", "exec", "rake", "db:migrate"]
         envFrom:
@@ -29,7 +29,7 @@ spec:
               name: whalebirdsocial-env
       containers:
         - name: rails
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/whalebirdsocial:d4ce18bb0c66590322d78223fd349b34b5c0fb31
+          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/whalebirdsocial:364aff1401b94b1f0657a5d147fc3803587523c1
           imagePullPolicy: Always
           ports:
             - name: http-port
