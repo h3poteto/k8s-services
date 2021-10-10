@@ -1,0 +1,11 @@
+apiVersion: elbv2.k8s.aws/v1alpha1
+kind: TargetGroupBinding
+metadata:
+  name: fascia
+  namespace: web-public
+spec:
+  serviceRef:
+    name: fascia-service
+    port: 80
+  targetGroupARN: arn:aws:elasticloadbalancing:ap-northeast-1:564677439943:targetgroup/fascia-prd/784c8296bbc648ba
+  targetType: ip

@@ -3,14 +3,12 @@ kind: Service
 metadata:
   name: fascia-service
   namespace: web-public
-  annotations:
-    alb.ingress.kubernetes.io/healthcheck-path: /health_check
 spec:
   ports:
     - port: 80
       targetPort: 9090
       protocol: TCP
-  type: NodePort
+  type: ClusterIP
   selector:
     app: fascia
 ---
