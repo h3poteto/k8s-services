@@ -3,13 +3,11 @@ kind: Service
 metadata:
   name: grafana-service
   namespace: web-public
-  annotations:
-    alb.ingress.kubernetes.io/healthcheck-path: /api/health
 spec:
   ports:
     - name: grafana
       port: 3000
       targetPort: 3000
-  type: NodePort
+  type: ClusterIP
   selector:
     app: grafana
