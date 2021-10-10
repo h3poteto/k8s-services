@@ -1,0 +1,11 @@
+apiVersion: elbv2.k8s.aws/v1alpha1
+kind: TargetGroupBinding
+metadata:
+  name: pleroma
+  namespace: web-public
+spec:
+  serviceRef:
+    name: pleromaio-service
+    port: 80
+  targetGroupARN: arn:aws:elasticloadbalancing:ap-northeast-1:564677439943:targetgroup/pleroma-prd/3cda2cc805ca9d64
+  targetType: ip

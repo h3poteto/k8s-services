@@ -16,6 +16,7 @@ releases:
   - name: aws-load-balancer-controller
     namespace: kube-system
     chart: eks/aws-load-balancer-controller
+    version: 1.2.7
     values:
       - clusterName: external-prd-20210225.k8s.h3poteto.dev
       - serviceAccount:

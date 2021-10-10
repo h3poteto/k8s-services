@@ -1,0 +1,11 @@
+apiVersion: elbv2.k8s.aws/v1alpha1
+kind: TargetGroupBinding
+metadata:
+  name: grafana
+  namespace: web-public
+spec:
+  serviceRef:
+    name: grafana-service
+    port: 3000
+  targetGroupARN: arn:aws:elasticloadbalancing:ap-northeast-1:564677439943:targetgroup/grafana-prd/21e977a2ad485eab
+  targetType: ip

@@ -1,0 +1,11 @@
+apiVersion: elbv2.k8s.aws/v1alpha1
+kind: TargetGroupBinding
+metadata:
+  name: masudastream
+  namespace: web-public
+spec:
+  serviceRef:
+    name: masudastream-service
+    port: 80
+  targetGroupARN: arn:aws:elasticloadbalancing:ap-northeast-1:564677439943:targetgroup/masudastream-prd/e19145d7c4633615
+  targetType: ip
