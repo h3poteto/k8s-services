@@ -47,8 +47,10 @@ spec:
                 name: whalebirdsocial-env
           resources:
             requests:
-              memory: 400
-              cpu: 333m
+              memory: 200Mi
+              cpu: 10m
+            limits:
+              memory: 1000Mi
           readinessProbe:
             httpGet:
               scheme: HTTP

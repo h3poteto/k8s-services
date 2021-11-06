@@ -49,8 +49,10 @@ spec:
                 name: seiyuwatch-env
           resources:
             requests:
-              memory: 300
-              cpu: 333m
+              memory: 100Mi
+              cpu: 20m
+            limits:
+              memory: 1000Mi
           readinessProbe:
             httpGet:
               scheme: HTTP
