@@ -47,8 +47,8 @@ spec:
                 name: pleromaio-env
           resources:
             requests:
-              memory: 1800Mi
-              cpu: 950m
+              memory: 800Mi
+              cpu: 200m
             limits:
               memory: 1800Mi
           readinessProbe:
