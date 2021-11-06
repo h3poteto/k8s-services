@@ -46,8 +46,8 @@ spec:
               value: nyaruko.cju8robzjmqc.ap-northeast-1.rds.amazonaws.com
           resources:
             requests:
-              memory: 300
-              cpu: 333m
+              memory: 300Mi
+              cpu: 50m
           readinessProbe:
             httpGet:
               scheme: HTTP
