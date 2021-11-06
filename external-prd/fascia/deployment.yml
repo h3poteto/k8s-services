@@ -58,6 +58,8 @@ spec:
             requests:
               memory: 50Mi
               cpu: 10m
+            limits:
+              memory: 200Mi
           readinessProbe:
             httpGet:
               scheme: HTTP
