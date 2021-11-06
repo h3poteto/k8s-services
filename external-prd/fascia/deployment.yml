@@ -56,8 +56,8 @@ spec:
                 name: fascia-env
           resources:
             requests:
-              memory: 200
-              cpu: 333m
+              memory: 50Mi
+              cpu: 10m
           readinessProbe:
             httpGet:
               scheme: HTTP

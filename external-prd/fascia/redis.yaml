@@ -28,5 +28,5 @@ spec:
               protocol: TCP
           resources:
             requests:
-              memory: 100
+              memory: 10Mi
       terminationGracePeriodSeconds: 60
