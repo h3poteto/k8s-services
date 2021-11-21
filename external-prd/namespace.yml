@@ -4,8 +4,6 @@ metadata:
   name: web-public
   labels:
     name: web-public
-  annotations:
-    iam.amazonaws.com/permitted: ".*"
 ---
 apiVersion: v1
 kind: Namespace
@@ -13,8 +11,6 @@ metadata:
   name: monitoring
   labels:
     name: monitoring
-  annotations:
-    iam.amazonaws.com/permitted: ".*"
 ---
 apiVersion: v1
 kind: Namespace
@@ -22,8 +18,6 @@ metadata:
   name: kube-system
   labels:
     name: kube-system
-  annotations:
-    iam.amazonaws.com/permitted: ".*"
 ---
 apiVersion: v1
 kind: Namespace
@@ -31,8 +25,6 @@ metadata:
   name: maintenance
   labels:
     name: maintenance
-  annotations:
-    iam.amazonaws.com/permitted: ".*"
 ---
 apiVersion: v1
 kind: Namespace
@@ -40,5 +32,3 @@ metadata:
   name: flux-system
   labels:
     name: flux-system
-  annotations:
-    iam.amazonaws.com/permitted: ".*"
