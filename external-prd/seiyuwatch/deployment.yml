@@ -16,8 +16,6 @@ spec:
       maxUnavailable: 0
   template:
     metadata:
-      annotations:
-        iam.amazonaws.com/role: seiyuwatch-prd-pod-role
       labels:
         app: seiyuwatch
     spec:
