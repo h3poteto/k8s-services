@@ -21,15 +21,6 @@ releases:
     version: 1.7.1
     values:
       - installCRDs: true
-
-  - name: irsa-pod-webhook-installer
-    namespace: kube-system
-    chart: h3poteto-stable/eks-pod-identity-webhook-installer
-    version: 0.1.3
-    values:
-      - eksPodIdentityWebhookInstaller:
-          tokenAudience: amazonaws.com
-          namespace: kube-system
   - name: aws-load-balancer-controller
     namespace: kube-system
     chart: eks/aws-load-balancer-controller
