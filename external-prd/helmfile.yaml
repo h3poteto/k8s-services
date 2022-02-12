@@ -74,7 +74,7 @@ releases:
   - name: node-manager
     namespace: kube-system
     chart: h3poteto-stable/node-manager
-    version: 0.3.2
+    version: 0.3.3
     values:
       - rbac:
           create: true
