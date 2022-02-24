@@ -24,7 +24,7 @@ releases:
   - name: aws-load-balancer-controller
     namespace: kube-system
     chart: eks/aws-load-balancer-controller
-    version: 1.3.2
+    version: 1.4.0
     values:
       - clusterName: external-prd-20211121.k8s.h3poteto.dev
       - serviceAccount:
@@ -38,7 +38,7 @@ releases:
   - name: prometheus-node-exporter
     namespace: monitoring
     chart: prometheus-community/prometheus-node-exporter
-    version: 1.15.0
+    version: 3.0.0
     values:
       - rbac:
           create: true
