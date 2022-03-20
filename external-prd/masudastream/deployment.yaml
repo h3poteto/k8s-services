@@ -21,7 +21,7 @@ spec:
     spec:
       initContainers:
         - name: migration
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/masudastream:0108495a0c3c41533f58490d2fe787ef2fd17461
+          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/masudastream:2724078c148d4c30ba5299ce0909e115b971f2ea
           imagePullPolicy: Always
           args: ["mix", "ecto.migrate"]
           envFrom:
@@ -32,7 +32,7 @@ spec:
               value: nyaruko.cju8robzjmqc.ap-northeast-1.rds.amazonaws.com
       containers:
         - name: phoenix
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/masudastream:0108495a0c3c41533f58490d2fe787ef2fd17461
+          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/masudastream:2724078c148d4c30ba5299ce0909e115b971f2ea
           imagePullPolicy: Always
           ports:
             - name: http-port
