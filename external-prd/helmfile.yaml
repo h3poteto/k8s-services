@@ -61,6 +61,28 @@ releases:
       - podAnnotations:
           prometheus.io/scrape: 'true'
           prometheus.io/port: '8080'
+  # - name: thanos
+  #   namespace: monitoring
+  #   chart: bitnami/thanos
+  #   version: 10.2.3
+  #   values:
+  #     - commonAnnotations:
+  #         eks.amazonaws.com/role-arn: arn:aws:iam::564677439943:role/thanos-pod-role
+  #     - objstoreConfig:
+  #         type: S3
+  #         config:
+  #           bucket: "external-prd-thanos-object"
+  #           region: "ap-northeast-1"
+  #           endpoint: "s3.ap-southeast-1.amazonaws.com"
+  #           aws_sdk_auth: true
+  #     - compactor:
+  #         enabled: true
+  #         persistence:
+  #           enabled: false
+  #     - storegateway:
+  #         enabled: true
+  #         persistence:
+  #           enabled: false
   - name: kms-secrets
     namespace: kube-system
     chart: h3poteto-stable/kms-secrets
