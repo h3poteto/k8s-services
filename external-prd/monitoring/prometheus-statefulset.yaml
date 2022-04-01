@@ -21,18 +21,11 @@ spec:
     spec:
       serviceAccountName: prometheus
       volumes:
+        - name: prometheus-data
+          emptyDir: {}
         - name: prometheus-config
           configMap:
             name: prometheus-server-conf
-      initContainers:
-        - name: "init-chown-data"
-          image: "busybox:latest"
-          imagePullPolicy: "IfNotPresent"
-          command: ["chown", "-R", "65534:65534", "/prometheus"]
-          volumeMounts:
-            - name: prometheus-data
-              mountPath: /prometheus
-              subPath: ""
       containers:
         - name: prometheus
           image: prom/prometheus:latest
@@ -67,13 +60,3 @@ spec:
               cpu: 200m
               memory: 1000Mi
       terminationGracePeriodSeconds: 300
-  volumeClaimTemplates:
-  - metadata:
-      name: prometheus-data
-    spec:
-      storageClassName: gp2
-      accessModes:
-        - ReadWriteOnce
-      resources:
-        requests:
-          storage: "16Gi"
