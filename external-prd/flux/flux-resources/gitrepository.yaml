@@ -1,0 +1,12 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: k8s-services
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  timeout: 20s
+  url: https://github.com/h3poteto/k8s-services
+  ref:
+    branch: master
+
