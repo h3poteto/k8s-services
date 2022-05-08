@@ -15,13 +15,6 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: kube-system
-  labels:
-    name: kube-system
----
-apiVersion: v1
-kind: Namespace
-metadata:
   name: maintenance
   labels:
     name: maintenance
