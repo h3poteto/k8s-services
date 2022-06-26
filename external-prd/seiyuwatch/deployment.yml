@@ -24,7 +24,7 @@ spec:
         fsGroup: 1000
       initContainers:
         - name: migration
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/seiyuwatch:5ef61e83bdaba046ff1dd44efc07139b4b714cc3
+          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/seiyuwatch:0d1eaca8487d40451275640abf3d79a0fa6e4bd8
           imagePullPolicy: Always
           args: ["mix", "ecto.migrate"]
           envFrom:
@@ -34,7 +34,7 @@ spec:
                 name: seiyuwatch-env
       containers:
         - name: phoenix
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/seiyuwatch:5ef61e83bdaba046ff1dd44efc07139b4b714cc3
+          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/seiyuwatch:0d1eaca8487d40451275640abf3d79a0fa6e4bd8
           imagePullPolicy: Always
           ports:
             - name: http-port
