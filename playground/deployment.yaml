@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu
+  namespace: sandbox
+  labels:
+    kops.k8s.io/inject-aws-pod-identity: enabled
+spec:
+  serviceAccountName: sandbox-sa
+  containers:
+    - name: ubuntu
+      image: ubuntu:latest
+      args: ["sleep", "3600"]
