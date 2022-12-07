@@ -1,32 +1,35 @@
 apiVersion: batch/v1
-kind: Job
+kind: CronJob
 metadata:
   name: prune-pleromaio
   namespace: web-public
   labels:
-    job: prune-pleromaio
+    app: prune-pleroma
 spec:
-  template:
-    metadata:
-      labels:
-        job: prune-pleromaio
+  schedule: "0 16 8 * *"
+  jobTemplate:
     spec:
-      restartPolicy: Never
-      containers:
-        - name: prune
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/pleroma/phoenix:latest
-          imagePullPolicy: Always
-          args: ["mix", "pleroma.database", "prune_objects", "--vacuum"]
-          envFrom:
-            - configMapRef:
-                name: pleromaio-env
-            - secretRef:
-                name: pleromaio-env
-          resources:
-            requests:
-              memory: 200Mi
-              cpu: 100m
-            limits:
-              memory: 1800Mi
+      template:
+        metadata:
+          labels:
+            job: prune-pleromaio
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: prune
+              image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/pleroma/phoenix:latest
+              imagePullPolicy: Always
+              args: ["mix", "pleroma.database", "prune_objects", "--vacuum"]
+              envFrom:
+                - configMapRef:
+                    name: pleromaio-env
+                - secretRef:
+                    name: pleromaio-env
+              resources:
+                requests:
+                  memory: 200Mi
+                  cpu: 100m
+                limits:
+                  memory: 1800Mi
 
-  backoffLimit: 0
+      backoffLimit: 0
