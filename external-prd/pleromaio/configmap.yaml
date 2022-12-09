@@ -2,7 +2,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: pleromaio-env
-  namespace: web-public
 data:
   AWS_REGION: ap-northeast-1
   DB_NAME: pleroma
