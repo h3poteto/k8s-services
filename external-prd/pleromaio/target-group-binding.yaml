@@ -2,7 +2,6 @@ apiVersion: elbv2.k8s.aws/v1alpha1
 kind: TargetGroupBinding
 metadata:
   name: pleroma
-  namespace: web-public
 spec:
   serviceRef:
     name: pleromaio-service

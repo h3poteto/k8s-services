@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pleromaio-deployment
-  namespace: web-public
   labels:
     app: pleromaio
 spec:
@@ -22,29 +21,35 @@ spec:
       serviceAccountName: pleromaio-sa
       securityContext:
         fsGroup: 1000
+      volumes:
+        - name: prod-config
+          secret:
+            secretName: pleromaio-config
       initContainers:
         - name: migration
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/pleroma/phoenix:5e147c2e66fc57809e4ab1503c4941c40c9bacb9
+          image: phoenix
           imagePullPolicy: Always
           args: ["mix", "ecto.migrate"]
-          envFrom:
-            - configMapRef:
-                name: pleromaio-env
-            - secretRef:
-                name: pleromaio-env
+          env:
+            - name: AWS_REGION
+              value: ap-northeast-1
+          volumeMount:
+            - name: prod-config
+              mountPath: /opt/pleromaio/prod.secret.exs
       containers:
         - name: phoenix
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/pleroma/phoenix:5e147c2e66fc57809e4ab1503c4941c40c9bacb9
+          image: phoenix
           imagePullPolicy: Always
           ports:
             - name: phoenix-port
               containerPort: 4000
               protocol: TCP
-          envFrom:
-            - configMapRef:
-                name: pleromaio-env
-            - secretRef:
-                name: pleromaio-env
+          env:
+            - name: AWS_REGION
+              value: ap-northeast-1
+          volumeMount:
+            - name: prod-config
+              mountPath: /opt/pleromaio/prod.secret.exs
           resources:
             requests:
               memory: 800Mi
@@ -72,7 +77,7 @@ spec:
             successThreshold: 1
             failureThreshold: 3
         - name: nginx
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/pleroma/nginx:5e147c2e66fc57809e4ab1503c4941c40c9bacb9
+          image: nginx
           imagePullPolicy: Always
           ports:
             - name: http-port
