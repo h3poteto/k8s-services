@@ -33,7 +33,7 @@ spec:
           env:
             - name: AWS_REGION
               value: ap-northeast-1
-          volumeMount:
+          volumeMounts:
             - name: prod-config
               mountPath: /opt/pleromaio/prod.secret.exs
       containers:
@@ -47,7 +47,7 @@ spec:
           env:
             - name: AWS_REGION
               value: ap-northeast-1
-          volumeMount:
+          volumeMounts:
             - name: prod-config
               mountPath: /opt/pleromaio/prod.secret.exs
           resources:
