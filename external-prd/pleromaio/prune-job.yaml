@@ -1,0 +1,37 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: prune-pleromaio
+  namespace: web-public
+  labels:
+    app: prune-pleromaio
+spec:
+  schedule: "18 16 * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            job: prune-pleromaio
+        spec:
+          restartPolicy: Never
+          volumes:
+            - name: prod-config
+              secret:
+                secretName: pleromaio-config
+          containers:
+            - name: prune
+              image: phoenix
+              imagePullPolicy: Always
+              args: ["mix", "pleroma.database", "prune_objects", "--vacuum"]
+              volumeMounts:
+                - name: prod-config
+                  mountPath: /opt/pleromaio
+              resources:
+                requests:
+                  memory: 200Mi
+                  cpu: 100m
+                limits:
+                  memory: 1800Mi
+
+      backoffLimit: 3
