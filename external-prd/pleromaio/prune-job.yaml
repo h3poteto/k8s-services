@@ -6,7 +6,7 @@ metadata:
   labels:
     app: prune-pleromaio
 spec:
-  schedule: "18 16 * * *"
+  schedule: "18 16 9 * *"
   jobTemplate:
     spec:
       template:
