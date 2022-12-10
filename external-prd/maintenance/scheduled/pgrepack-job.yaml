@@ -6,7 +6,7 @@ metadata:
   labels:
     app: pgrepack
 spec:
-  schedule: "0 16 7 * *"
+  schedule: "18 16 10 * *"
   jobTemplate:
     spec:
       template:
@@ -36,4 +36,4 @@ spec:
                   memory: 500Mi
                   cpu: 500m
           restartPolicy: Never
-      backoffLimit: 0
+      backoffLimit: 3
