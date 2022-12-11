@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: seiyuwatch-deployment
-  namespace: web-public
   labels:
     app: seiyuwatch
 spec:
@@ -24,7 +23,7 @@ spec:
         fsGroup: 1000
       initContainers:
         - name: migration
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/seiyuwatch:c1c072dc83f2e931a5526c42cb886a67fa007640
+          image: phoenix
           imagePullPolicy: Always
           args: ["mix", "ecto.migrate"]
           envFrom:
@@ -34,7 +33,7 @@ spec:
                 name: seiyuwatch-env
       containers:
         - name: phoenix
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/seiyuwatch:c1c072dc83f2e931a5526c42cb886a67fa007640
+          image: phoenix
           imagePullPolicy: Always
           ports:
             - name: http-port
