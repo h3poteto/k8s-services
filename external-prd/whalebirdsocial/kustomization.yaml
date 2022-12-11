@@ -12,7 +12,7 @@ resources:
 images:
 - name: phoenix
   newName: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/seiyuwatch
-  newTag: ed06a9a85f797071d479c432566a26b4fe54f43c
+  newTag: f66a43e1a089d5801591926415209cb3400367a5
 - name: rails
   newName: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/whalebirdsocial
   newTag: 7da175e050d9563b8b03c0606f9a7beb0010aaf6
