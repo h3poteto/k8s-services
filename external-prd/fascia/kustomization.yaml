@@ -14,6 +14,9 @@ images:
 - name: go
   newName: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fascia
   newTag: 2138af2bfe70f6fbe57ec83036429cddabe7f12a
+- name: rails
+  newName: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fascia
+  newTag: ad5b5c345d22c01e3d08ddb5e4e553ec45ec6cff
 - name: redis
   newName: redis
   newTag: 5.0.3-alpine
