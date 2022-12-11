@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: whalebird-deployment
-  namespace: web-public
   labels:
     app: whalebird
 spec:
@@ -21,7 +20,7 @@ spec:
     spec:
       initContainers:
       - name: migration
-        image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/whalebirdsocial:5f6f0547b497b515b1ecd6b90f5db263dc9f556f
+        image: rails
         imagePullPolicy: Always
         args: ["bundle", "exec", "rake", "db:migrate"]
         envFrom:
@@ -29,7 +28,7 @@ spec:
               name: whalebirdsocial-env
       containers:
         - name: rails
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/whalebirdsocial:5f6f0547b497b515b1ecd6b90f5db263dc9f556f
+          image: rails
           imagePullPolicy: Always
           ports:
             - name: http-port
