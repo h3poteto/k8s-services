@@ -23,7 +23,7 @@ spec:
             - name: prune
               image: phoenix
               imagePullPolicy: Always
-              args: ["mix", "pleroma.database", "prune_objects", "--vacuum"]
+              args: ["mix", "pleroma.database", "prune_objects"]
               volumeMounts:
                 - name: prod-config
                   mountPath: /opt/pleromaio
