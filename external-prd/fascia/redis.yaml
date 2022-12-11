@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fascia-redis-deployment
-  namespace: web-public
   labels:
     app: fascia-redis
 spec:
@@ -21,7 +20,7 @@ spec:
     spec:
       containers:
         - name: redis
-          image: redis:5.0.3-alpine
+          image: redis
           ports:
             - name: tcp-port
               containerPort: 6379

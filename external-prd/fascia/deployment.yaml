@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fascia-deployment
-  namespace: web-public
   labels:
     app: fascia
 spec:
@@ -21,7 +20,7 @@ spec:
     spec:
       initContainers:
         - name: migration
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fascia:2138af2bfe70f6fbe57ec83036429cddabe7f12a
+          image: go
           imagePullPolicy: Always
           args: ["goose", "-env", "production", "up"]
           env:
@@ -34,7 +33,7 @@ spec:
                 name: fascia-env
       containers:
         - name: go
-          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fascia:2138af2bfe70f6fbe57ec83036429cddabe7f12a
+          image: go
           imagePullPolicy: Always
           ports:
             - name: http-port
