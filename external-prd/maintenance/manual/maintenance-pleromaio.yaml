@@ -1,0 +1,33 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: maintenance-pleromaio
+  namespace: web-public
+  labels:
+    app: maintenance-pleromaio
+spec:
+  template:
+    metadata:
+      labels:
+        job: maintenance-pleromaio
+    spec:
+      restartPolicy: Never
+      volumes:
+        - name: prod-config
+          secret:
+            secretName: pleromaio-config
+      containers:
+        - name: maintenance
+          image: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/pleroma/phoenix:latest
+          imagePullPolicy: Always
+          args: ["mix", "pleroma.database", "update_users_following_followers_counts"]
+          volumeMounts:
+            - name: prod-config
+              mountPath: /opt/pleromaio
+          resources:
+            requests:
+              memory: 200Mi
+              cpu: 100m
+            limits:
+              memory: 1800Mi
+  backoffLimit: 0
