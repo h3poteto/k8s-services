@@ -13,7 +13,7 @@ resources:
 images:
 - name: go
   newName: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fascia
-  newTag: 9252afd4cb710eed6c647f7a54ab669d5d812738
+  newTag: 075bd3dbb12d0877fe2581b5d01c1e9cc81378f5
 - name: redis
   newName: redis
   newTag: 5.0.3-alpine
