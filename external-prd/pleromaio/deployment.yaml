@@ -52,7 +52,7 @@ spec:
               value: ap-northeast-1
           envFrom:
             - secretRef:
-                name: pleroma-env
+                name: pleromaio-env
           volumeMounts:
             - name: prod-config
               mountPath: /opt/pleromaio
