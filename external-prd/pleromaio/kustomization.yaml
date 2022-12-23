@@ -4,7 +4,6 @@ kind: Kustomization
 namespace: web-public
 
 resources:
-- configmap.yaml
 - external-secrets.yaml
 - service-account.yaml
 - service.yaml
