@@ -14,7 +14,7 @@ resources:
 images:
 - name: nginx
   newName: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/pleroma/nginx
-  newTag: sha-07e45cc2bfe80bcb9612df7bf6aadf8ee9ad27d2
+  newTag: sha-2109ebb3800cd9c794c9f163e1aaccc6a394d881
 - name: phoenix
   newName: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/pleroma/phoenix
-  newTag: sha-07e45cc2bfe80bcb9612df7bf6aadf8ee9ad27d2
+  newTag: sha-2109ebb3800cd9c794c9f163e1aaccc6a394d881
