@@ -21,10 +21,6 @@ spec:
       serviceAccountName: pleromaio-sa
       securityContext:
         fsGroup: 1000
-      volumes:
-        - name: prod-config
-          secret:
-            secretName: pleromaio-config
       initContainers:
         - name: migration
           image: phoenix
