@@ -32,9 +32,6 @@ spec:
           envFrom:
             - secretRef:
                 name: pleromaio-env
-          volumeMounts:
-            - name: prod-config
-              mountPath: /opt/pleromaio
       containers:
         - name: phoenix
           image: phoenix
@@ -49,9 +46,6 @@ spec:
           envFrom:
             - secretRef:
                 name: pleromaio-env
-          volumeMounts:
-            - name: prod-config
-              mountPath: /opt/pleromaio
           resources:
             requests:
               memory: 800Mi
