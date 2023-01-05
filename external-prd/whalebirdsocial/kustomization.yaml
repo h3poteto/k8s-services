@@ -15,4 +15,4 @@ images:
   newTag: e93546c4b6ac71f388926fdaf11a6368540462fc
 - name: rails
   newName: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/whalebirdsocial
-  newTag: e65bba4c22ee42b667d55b6056f7287f02481792
+  newTag: sha-7c48962dbf72e5ae03bf6aa45a876c998e30de33
