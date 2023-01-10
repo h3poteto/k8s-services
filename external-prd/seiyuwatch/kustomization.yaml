@@ -12,6 +12,9 @@ resources:
 - deployment.yaml
 
 images:
+- name: elixir
+  newName: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/seiyuwatch
+  newTag: sha-b489ba353e2259e745f45a431cbe6ebb42790fa8
 - name: phoenix
   newName: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/seiyuwatch
   newTag: c1c072dc83f2e931a5526c42cb886a67fa007640
