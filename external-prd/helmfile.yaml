@@ -63,16 +63,6 @@ releases:
       - podAnnotations:
           prometheus.io/scrape: 'true'
           prometheus.io/port: '8080'
-  - name: kms-secrets
-    namespace: kube-system
-    chart: h3poteto-stable/kms-secrets
-    version: 0.1.7
-    values:
-      - rbac:
-          create: true
-          serviceAccount:
-            annotations:
-              eks.amazonaws.com/role-arn: arn:aws:iam::564677439943:role/kms-secrets-role
   - name: node-manager
     namespace: kube-system
     chart: h3poteto-stable/node-manager
