@@ -5,7 +5,7 @@ namespace: web-public
 
 resources:
 - configmap.yaml
-- encrypted-kms-secret.yaml
+- external-secrets.yaml
 - service.yaml
 - service-account.yaml
 - target-group-binding.yaml
