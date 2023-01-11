@@ -2,7 +2,6 @@ apiVersion: elbv2.k8s.aws/v1alpha1
 kind: TargetGroupBinding
 metadata:
   name: grafana
-  namespace: web-public
 spec:
   serviceRef:
     name: grafana-service
