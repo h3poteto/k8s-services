@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: maintenance
+
+resources:
+- configmap.yaml
+- external-secrets.yaml
+- pgrepack-job.yaml
+
+images:
+- name: pgrepack
+  newName: ghcr.io/h3poteto/pg_repack
+  newTag: 1.4.6
