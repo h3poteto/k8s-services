@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: web-public
 
 resources:
-- encrypted-kms-secret.yaml
+- external-secrets.yaml
 - service.yaml
 - target-group-binding.yaml
 - deployment.yaml
