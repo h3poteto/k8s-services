@@ -13,3 +13,6 @@ images:
 - name: nextjs
   newName: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fedistarnet
   newTag: latest
+- name: rails
+  newName: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fedistarnet
+  newTag: sha-7ef6e2bce89204d518efdc602847f225e6ac6d34
