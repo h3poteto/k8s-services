@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fedistarnet-deployment
+  labels:
+    app: fedistarnet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fedistarnet
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: fedistarnet
+    spec:
+      containers:
+        - name: nextjs
+          image: nextjs
+          imagePullPolicy: Always
+          ports:
+            - name: http-port
+              containerPort: 3000
+              protocol: TCP
+          env:
+            - name: NODE_ENV
+              value: production
+          envFrom:
+            - secretRef:
+                name: fedistarnet-env
+          resources:
+            requests:
+              memory: 100Mi
+              cpu: 10m
+            limits:
+              memory: 700Mi
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 20
+            successThreshold: 1
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /
+              port: 3000
+            initialDelaySeconds: 60
+            periodSeconds: 60
+            timeoutSeconds: 20
+            successThreshold: 1
+            failureThreshold: 3
+      terminationGracePeriodSeconds: 60

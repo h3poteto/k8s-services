@@ -1,0 +1,10 @@
+apiVersion: elbv2.k8s.aws/v1alpha1
+kind: TargetGroupBinding
+metadata:
+  name: fedistar
+spec:
+  serviceRef:
+    name: fedistarnet-service
+    port: 80
+  targetGroupARN: arn:aws:elasticloadbalancing:ap-northeast-1:564677439943:targetgroup/fedistar-prd/f76de51f0dff9fb0
+  targetType: ip
