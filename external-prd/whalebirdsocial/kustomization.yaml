@@ -12,4 +12,4 @@ resources:
 images:
 - name: rails
   newName: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/whalebirdsocial
-  newTag: sha-dcd45bcf3b7ecbb6daad72e13ed9e2d792bcc91a
+  newTag: sha-95b682a5e297f613f6afeb79879c300dbc65c716
