@@ -18,14 +18,6 @@ spec:
       labels:
         app: whalebird
     spec:
-      initContainers:
-      - name: migration
-        image: rails
-        imagePullPolicy: Always
-        args: ["bundle", "exec", "rake", "db:migrate"]
-        envFrom:
-          - secretRef:
-              name: whalebirdsocial-env
       containers:
         - name: rails
           image: rails
@@ -35,10 +27,6 @@ spec:
               containerPort: 3000
               protocol: TCP
           env:
-            - name: RAILS_SERVE_STATIC_FILES
-              value: "true"
-            - name: RAILS_LOG_TO_STDOUT
-              value: "true"
             - name: PORT
               value: "3000"
           envFrom:
