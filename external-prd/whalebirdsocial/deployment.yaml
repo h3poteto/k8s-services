@@ -19,8 +19,8 @@ spec:
         app: whalebird
     spec:
       containers:
-        - name: rails
-          image: rails
+        - name: nextjs
+          image: nextjs
           imagePullPolicy: Always
           ports:
             - name: http-port
