@@ -20,7 +20,7 @@ releases:
   - name: external-secrets-operator
     namespace: kube-system
     chart: external-secrets/external-secrets
-    version: 0.5.9
+    version: 0.8.3
     values:
       - installCRDs: true
   - name: aws-load-balancer-controller
