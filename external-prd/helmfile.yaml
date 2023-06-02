@@ -20,13 +20,13 @@ releases:
   - name: external-secrets-operator
     namespace: kube-system
     chart: external-secrets/external-secrets
-    version: 0.5.9
+    version: 0.8.3
     values:
       - installCRDs: true
   - name: aws-load-balancer-controller
     namespace: kube-system
     chart: eks/aws-load-balancer-controller
-    version: 1.4.3
+    version: 1.5.3
     values:
       - clusterName: external-prd-20220509.k8s.h3poteto.dev
       - serviceAccount:
@@ -40,11 +40,11 @@ releases:
   - name: prometheus-node-exporter
     namespace: monitoring
     chart: prometheus-community/prometheus-node-exporter
-    version: 3.3.1
+    version: 4.17.4
     values:
       - rbac:
           create: true
-          pspEnabled: true
+          pspEnabled: false
       - podLabels:
           prometheus.io/scrape: 'true'
           prometheus.io/port: '9100'
