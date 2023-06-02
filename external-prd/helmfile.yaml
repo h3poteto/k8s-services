@@ -44,7 +44,7 @@ releases:
     values:
       - rbac:
           create: true
-          pspEnabled: true
+          pspEnabled: false
       - podLabels:
           prometheus.io/scrape: 'true'
           prometheus.io/port: '9100'
