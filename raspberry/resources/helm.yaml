@@ -12,5 +12,5 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: metallb
-        namespace: default
+        namespace: flux-system
       interval: 1m
