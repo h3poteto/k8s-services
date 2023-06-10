@@ -1,0 +1,149 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: external-secrets
+  namespace: flux-system
+spec:
+  interval: 1m
+  targetNamespace: kube-system
+  chart:
+    spec:
+      chart: external-secrets
+      version: '0.8.3'
+      sourceRef:
+        kind: HelmRepository
+        name: external-secrets
+        namespace: flux-system
+      interval: 1m
+  values:
+    installCRDs: true
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: aws-load-balancer-controller
+  namespace: flux-system
+spec:
+  interval: 1m
+  targetNamespace: kube-system
+  chart:
+    spec:
+      chart: aws-load-balancer-controller
+      version: '1.5.3'
+      sourceRef:
+        kind: HelmRepository
+        name: eks
+        namespace: flux-system
+      interval: 1m
+  values:
+    clusterName: external-prd-20220509.k8s.h3poteto.dev
+    serviceAccount:
+      create: true
+      annotations:
+        eks.amazonaws.com/role-arn: arn:aws:iam::564677439943:role/alb-ingress-controller-role
+    rbac:
+      create: true
+    region: ap-northeast-1
+    vpcId: vpc-fb354b9c
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: prometheus-node-exporter
+  namespace: flux-system
+spec:
+  interval: 1m
+  targetNamespace: monitoring
+  chart:
+    spec:
+      chart: prometheus-node-exporter
+      version: '4.17.4'
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+      interval: 1m
+  values:
+    rbac:
+      create: true
+      pspEnabled: false
+    podLabels:
+      prometheus.io/scrape: 'true'
+      prometheus.io/port: '9100'
+    service:
+      type: ClusterIP
+      port: 9100
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kube-state-metrics
+  namespace: flux-system
+spec:
+  interval: 1m
+  targetNamespace: monitoring
+  chart:
+    spec:
+      chart: kube-state-metrics
+      version: '5.7.0'
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+      interval: 1m
+  values:
+    service:
+      port: 8080
+    podAnnotations:
+      prometheus.io/scrape: 'true'
+      prometheus.io/port: '8080'
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: node-manager
+  namespace: flux-system
+spec:
+  interval: 1m
+  targetNamespace: kube-system
+  chart:
+    spec:
+      chart: node-manager
+      version: '0.4.0'
+      sourceRef:
+        kind: HelmRepository
+        name: h3poteto-stable
+        namespace: flux-system
+      interval: 1m
+  values:
+    rbac:
+      create: true
+      serviceAccount:
+        annotations:
+          eks.amazonaws.com/role-arn: arn:aws:iam::564677439943:role/node-manager-controller-role
+    nodemanager:
+      aws:
+        region: ap-northeast-1
+        masters:
+          desired: 3
+          asgModifyCoolTimeSeconds: 300
+          drainGracePeriodSeconds: 300
+          refreshSchedule: "00 15 * * 5"
+          surplusNodes: 0
+          enableReplenish: false
+          autoScalingGroups:
+            - name: master-ap-northeast-1a.masters.external-prd-20220509.k8s.h3poteto.dev
+            - name: master-ap-northeast-1c.masters.external-prd-20220509.k8s.h3poteto.dev
+            - name: master-ap-northeast-1d.masters.external-prd-20220509.k8s.h3poteto.dev
+        workers:
+          desired: 3
+          asgModifyCoolTimeSeconds: 300
+          drainGracePeriodSeconds: 300
+          refreshSchedule: "00 15 * * 6"
+          surplusNodes: 1
+          enableReplenish: false
+          autoScalingGroups:
+            - name: nodes-ap-northeast-1a.external-prd-20220509.k8s.h3poteto.dev
+            - name: nodes-ap-northeast-1c.external-prd-20220509.k8s.h3poteto.dev
+            - name: nodes-ap-northeast-1d.external-prd-20220509.k8s.h3poteto.dev
