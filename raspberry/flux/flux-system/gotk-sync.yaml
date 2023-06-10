@@ -32,7 +32,7 @@ metadata:
   name: repositories
   namespace: flux-system
 spec:
-  interval: 10m0s
+  interval: 1m0s
   path: ./raspberry/repositories
   prune: true
   sourceRef:
@@ -45,7 +45,7 @@ metadata:
   name: resources
   namespace: flux-system
 spec:
-  interval: 10m0s
+  interval: 1m0s
   path: ./raspberry/resources
   prune: true
   sourceRef:
