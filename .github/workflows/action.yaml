@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: validate manifests in external-prd
-        uses: makocchi-git/actions-k8s-manifests-validate@v1.0.0
+        uses: makocchi-git/actions-k8s-manifests-validate@v1.0.1
         with:
           version: 1.14.7
           # https://github.com/instrumenta/kubeval/pull/192
