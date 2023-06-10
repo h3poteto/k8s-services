@@ -1,3 +1,4 @@
+---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -13,9 +14,7 @@ rules:
 - apiGroups: ["apps"]
   verbs: ["get", "list", "update", "patch"]
   resources: ["deployments", "replicasets"]
-
 ---
-
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
