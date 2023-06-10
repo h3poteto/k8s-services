@@ -4,7 +4,7 @@ metadata:
   name: metallb
   namespace: flux-system
 spec:
-  interval: 5m
+  interval: 1m
   targetNamespace: metallb
   chart:
     spec:
