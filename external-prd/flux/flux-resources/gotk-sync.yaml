@@ -1,12 +1,13 @@
+---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: fedistarnet
+  name: resources
   namespace: flux-system
 spec:
+  interval: 1m0s
+  path: ./external-prd/resources
+  prune: true
   sourceRef:
     kind: GitRepository
-    name: k8s-services
-  path: ./external-prd/fedistarnet
-  interval: 5m
-  prune: true
+    name: flux-system
