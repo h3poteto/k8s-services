@@ -16,4 +16,4 @@ images:
   newTag: sha-385c92fd24fb9a258d54873aea4e8a40e3d51488
 - name: redis
   newName: redis
-  newTag: 5.0.14-alpine
+  newTag: 7.0.11-alpine
