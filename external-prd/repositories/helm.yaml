@@ -3,6 +3,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
   name: external-secrets
+  namespace: flux-system
 spec:
   interval: 5m
   url: https://charts.external-secrets.io
@@ -11,6 +12,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
   name: eks
+  namespace: flux-system
 spec:
   interval: 5m
   url: https://aws.github.io/eks-charts
@@ -19,6 +21,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
   name: prometheus-community
+  namespace: flux-system
 spec:
   interval: 5m
   url: https://prometheus-community.github.io/helm-charts
@@ -27,6 +30,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
   name: h3poteto-stable
+  namespace: flux-system
 spec:
   interval: 5m
   url: https://h3poteto.github.io/charts/stable
