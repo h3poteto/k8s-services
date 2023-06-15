@@ -3,3 +3,4 @@ vendor/
 *secret.yaml
 !encrypted*.yml
 !encrypted*.yaml
+**/secrets/*
