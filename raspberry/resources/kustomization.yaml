@@ -4,3 +4,4 @@ resources:
 - namespaces.yaml
 - helm.yaml
 - services.yaml
+- clustersecretstore.yaml
