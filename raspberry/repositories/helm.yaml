@@ -25,3 +25,12 @@ metadata:
 spec:
   interval: 5m
   url: https://charts.external-secrets.io
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: longhorn
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: longhorn https://charts.longhorn.io
