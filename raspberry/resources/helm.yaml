@@ -57,3 +57,6 @@ spec:
   values:
     persistence:
       defaultClassReplicaCount: 1
+    service:
+      ui:
+        type: LoadBalancer
