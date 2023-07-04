@@ -6,6 +6,6 @@ metadata:
   name: default-pool
 spec:
   addresses:
-    - 192.168.10.65-192.168.10.128
+    - 192.168.10.128-192.168.10.255
   autoAssign: true
   avoidBuggyIPs: true
