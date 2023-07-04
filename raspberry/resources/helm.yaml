@@ -16,6 +16,11 @@ spec:
         name: metallb
         namespace: flux-system
       interval: 1m
+  values:
+    speaker:
+      excludeInterfaces:
+        enabled: false
+      logLevel: "all"
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
