@@ -116,10 +116,10 @@ spec:
       type: LoadBalancer
     ingress:
       enabled: false
-    # persistence:
-    #   enabled: true
-    #   type: pvc
-    #   storageClassName: longhorn
+    persistence:
+      enabled: true
+      type: pvc
+      storageClassName: longhorn
     admin:
       existingSecret: "grafana-env"
       userKey: "ADMIN_USER"
