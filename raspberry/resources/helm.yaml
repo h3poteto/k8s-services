@@ -20,7 +20,7 @@ spec:
     speaker:
       excludeInterfaces:
         enabled: false
-      logLevel: "all"
+      logLevel: "debug"
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
