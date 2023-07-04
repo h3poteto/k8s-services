@@ -68,7 +68,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  targetNamespace: kube-system
+  targetNamespace: monitoring
   chart:
     spec:
       chart: prometheus
@@ -100,7 +100,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  targetNamespace: kube-system
+  targetNamespace: monitoring
   chart:
     spec:
       chart: grafana
