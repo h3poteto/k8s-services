@@ -135,4 +135,4 @@ spec:
           - name: Prometheus
             type: prometheus
             access: proxy
-            url: http://kube-system-prometheus-server.kube-system.svc.cluster.local
+            url: http://monitoring-prometheus-server.monitoring.svc.cluster.local
