@@ -5,5 +5,25 @@
   ],
   "flux": {
     "fileMatch": ["\\.yaml$"]
-  }
+  },
+  "packageRules": [
+    {
+      "additionalBranchPrefix": "{{baseDir}}-",
+      "commitMessagePrefix": "raspberry: ",
+      "matchPackagePatterns": ["*"],
+      "matchPaths": [
+        "raspberry/**"
+      ],
+      "prPriority": 10
+    },
+    {
+      "additionalBranchPrefix": "{{baseDir}}-",
+      "commitMessagePrefix": "external-prd: ",
+      "matchPackagePatterns": ["*"],
+      "matchPaths": [
+        "external-prd/**"
+      ],
+      "prPriority": 5
+    }
+  ]
 }
