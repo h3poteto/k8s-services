@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: monitoring
 
 resources:
-- external-secrets.yaml
+- sealed-secrets.yaml
