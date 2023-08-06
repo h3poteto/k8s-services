@@ -25,7 +25,7 @@ spec:
         - name: migration
           image: phoenix
           imagePullPolicy: Always
-          args: ["mix", "ecto.migrate"]
+          args: ["/app/bin/migrate"]
           envFrom:
             - configMapRef:
                 name: seiyuwatch-env
