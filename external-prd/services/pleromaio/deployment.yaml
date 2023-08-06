@@ -25,7 +25,7 @@ spec:
         - name: migration
           image: phoenix
           imagePullPolicy: Always
-          args: ["mix", "ecto.migrate"]
+          args: ["/opt/pleroma/bin/pleroma_ctl", "migrate"]
           env:
             - name: AWS_REGION
               value: ap-northeast-1
