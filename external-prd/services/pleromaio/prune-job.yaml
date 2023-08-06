@@ -19,7 +19,7 @@ spec:
             - name: prune
               image: phoenix
               imagePullPolicy: Always
-              args: ["mix", "pleroma.database", "prune_objects"]
+              args: ["/opt/pleroma/bin/pleroma_ctl", "database", "prune_objects"]
               env:
                 - name: AWS_REGION
                   value: ap-northeast-1
