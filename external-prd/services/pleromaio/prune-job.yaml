@@ -19,7 +19,8 @@ spec:
             - name: prune
               image: phoenix
               imagePullPolicy: Always
-              args: ["/opt/pleroma/bin/pleroma_ctl", "database", "prune_objects"]
+              command: ["/bin/bash", "-c"]
+              args: ["/opt/pleroma/bin/pleroma daemon && echo 'Waiting application start...' && sleep 30 && /opt/pleroma/bin/pleroma_ctl database prune_objects"]
               env:
                 - name: AWS_REGION
                   value: ap-northeast-1
