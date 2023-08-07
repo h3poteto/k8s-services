@@ -22,7 +22,7 @@ spec:
         - name: migration
           image: elixir
           imagePullPolicy: Always
-          args: ["mix", "ecto.migrate"]
+          args: ["/app/bin/migrate"]
           envFrom:
             - secretRef:
                 name: masudastream-env
