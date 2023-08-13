@@ -133,9 +133,9 @@ spec:
           surplusNodes: 0
           enableReplenish: false
           autoScalingGroups:
-            - name: master-ap-northeast-1a.masters.external-prd-20220509.k8s.h3poteto.dev
-            - name: master-ap-northeast-1c.masters.external-prd-20220509.k8s.h3poteto.dev
-            - name: master-ap-northeast-1d.masters.external-prd-20220509.k8s.h3poteto.dev
+            - name: control-plane-ap-northeast-1a.masters.external-prd-20230615.k8s.h3poteto.dev
+            - name: control-plane-ap-northeast-1c.masters.external-prd-20230615.k8s.h3poteto.dev
+            - name: control-plane-ap-northeast-1d.masters.external-prd-20230615.k8s.h3poteto.dev
         workers:
           desired: 3
           asgModifyCoolTimeSeconds: 300
@@ -144,6 +144,6 @@ spec:
           surplusNodes: 1
           enableReplenish: false
           autoScalingGroups:
-            - name: nodes-ap-northeast-1a.external-prd-20220509.k8s.h3poteto.dev
-            - name: nodes-ap-northeast-1c.external-prd-20220509.k8s.h3poteto.dev
-            - name: nodes-ap-northeast-1d.external-prd-20220509.k8s.h3poteto.dev
+            - name: nodes-ap-northeast-1a.external-prd-20230615.k8s.h3poteto.dev
+            - name: nodes-ap-northeast-1c.external-prd-20230615.k8s.h3poteto.dev
+            - name: nodes-ap-northeast-1d.external-prd-20230615.k8s.h3poteto.dev
