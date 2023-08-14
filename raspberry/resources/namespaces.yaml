@@ -19,3 +19,10 @@ metadata:
   name: longhorn-system
   labels:
     name: longhorn-system
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: tailscale
+  labels:
+    name: tailscale
