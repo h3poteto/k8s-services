@@ -74,6 +74,7 @@ spec:
       persistentVolume:
         enabled: true
         storageClass: longhorn
+        size: 16Gi
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
