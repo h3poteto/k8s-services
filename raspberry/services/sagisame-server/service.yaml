@@ -6,13 +6,16 @@ metadata:
     metallb.universe.tf/loadBalancerIPs: 192.168.10.136
 spec:
   ports:
-    - port: 6900
+    - name: login
+      port: 6900
       targetPort: 6900
       protocol: TCP
-    - port: 6121
+    - name: char
+      port: 6121
       targetPort: 6121
       protocol: TCP
-    - port: 5121
+    - name: map
+      port: 5121
       targetPort: 5121
       protocol: TCP
   type: LoadBalancer
