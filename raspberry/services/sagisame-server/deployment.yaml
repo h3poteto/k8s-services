@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sagisame-server
+  labels:
+    app: sagisame-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sagisame-server
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: sagisame-server
+    spec:
+      imagePullSecrets:
+        - name: ghcr-secrets
+      containers:
+        - name: login
+          image: sagisame-server
+          args: ["./login-server", "--login-config", "./conf/login_auriga.conf"]
+          resources:
+            requests:
+              cpu: 300m
+              memory: 500Mi
+            limits:
+              memory: 1000Mi
+        - name: char
+          image: sagisame-server
+          args: ["./char-server", "--char-config", "./conf/char_auriga.conf", "--inter-config", "./conf/inter_auriga.conf"]
+          resources:
+            requests:
+              cpu: 300m
+              memory: 500Mi
+            limits:
+              memory: 1000Mi
+        - name: map
+          image: sagisame-server
+          args: ["./map-server", "--map-config", "./conf/map_auriga.conf", "--battle-config", "./conf/battle_auriga.conf", "--atcommand-config", "./conf/atcommand_auriga.conf", "--script-config", "./conf/script_auriga.conf", "--msg-config", "./conf/msg_auriga.conf"]
+          resources:
+            requests:
+              cpu: 500m
+              memory: 500Mi
+            limits:
+              memory: 1000Mi
