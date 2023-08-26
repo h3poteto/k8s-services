@@ -26,3 +26,10 @@ metadata:
   name: tailscale
   labels:
     name: tailscale
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sagisame-server
+  labels:
+    name: sagisame-server
