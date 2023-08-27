@@ -133,3 +133,31 @@ spec:
         name: sealed-secrets
         namespace: flux-system
       interval: 1m
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ingress-nginx
+  namespace: flux-system
+spec:
+  interval: 1m
+  targetNamespace: kube-system
+  chart:
+    spec:
+      chart: ingress-nginx
+      version: '4.7.1'
+      sourceRef:
+        kind: HelmRepository
+        name: ingress-nginx
+        namespace: flux-system
+      interval: 1m
+  values:
+    controller:
+      replicaCount: 2
+      autoscaling:
+        enabled: false
+      service:
+        type: LoadBalancer
+        enableHttps: false
+      admissionWebhooks:
+        enabled: false
