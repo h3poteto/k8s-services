@@ -41,7 +41,23 @@ spec:
   values:
     service:
       ui:
-        type: LoadBalancer
+        type: ClusterIP
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      host: "longhorn.h3poteto.local"
+      annotations:
+        # type of authentication
+        nginx.ingress.kubernetes.io/auth-type: basic
+        # prevent the controller from redirecting (308) to HTTPS
+        nginx.ingress.kubernetes.io/ssl-redirect: 'false'
+        # name of the secret that contains the user/password definitions
+        nginx.ingress.kubernetes.io/auth-secret: basic-auth
+        # message to display with an appropriate context why the authentication is required
+        nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required '
+        # custom max body size for file uploading like backing image uploading
+        nginx.ingress.kubernetes.io/proxy-body-size: 10000m
+
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
