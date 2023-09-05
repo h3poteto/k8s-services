@@ -5,6 +5,7 @@ namespace: sagisame-server
 
 resources:
 - sealed-secrets.yaml
+- persistent-volume-claim.yaml
 - deployment.yaml
 - service.yaml
 

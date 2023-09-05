@@ -18,31 +18,66 @@ spec:
     spec:
       imagePullSecrets:
         - name: ghcr-secrets
+      initContainers:
+        - name: grf
+          image: amazon/aws-cli
+          args: ["s3", "sync", "s3://sagisame-grf", "/var/opt/app/grf"]
+          envFrom:
+            - secretRef:
+                name: aws-secrets
+          volumeMounts:
+            - mountPath: "/var/opt/app/grf"
+              name: grf
       containers:
         - name: login
           image: sagisame-server
           args: ["./login-server", "--login-config", "./conf/login_auriga.conf"]
           resources:
             requests:
-              cpu: 300m
-              memory: 500Mi
+              cpu: 200m
+              memory: 300Mi
             limits:
               memory: 1000Mi
+          volumeMounts:
+            - mountPath: "/var/opt/app/auriga/save"
+              name: save-data
+            - mountPath: "/var/opt/app/grf"
+              name: grf
         - name: char
           image: sagisame-server
           args: ["./char-server", "--char-config", "./conf/char_auriga.conf", "--inter-config", "./conf/inter_auriga.conf"]
           resources:
             requests:
-              cpu: 300m
-              memory: 500Mi
+              cpu: 200m
+              memory: 300Mi
             limits:
               memory: 1000Mi
+          volumeMounts:
+            - mountPath: "/var/opt/app/auriga/save"
+              name: save-data
+            - mountPath: "/var/opt/app/grf"
+              name: grf
         - name: map
           image: sagisame-server
           args: ["./map-server", "--map-config", "./conf/map_auriga.conf", "--battle-config", "./conf/battle_auriga.conf", "--atcommand-config", "./conf/atcommand_auriga.conf", "--script-config", "./conf/script_auriga.conf", "--msg-config", "./conf/msg_auriga.conf"]
           resources:
             requests:
-              cpu: 500m
-              memory: 500Mi
+              cpu: 200m
+              memory: 300Mi
             limits:
               memory: 1000Mi
+          volumeMounts:
+            - mountPath: "/var/opt/app/auriga/save"
+              name: save-data
+            - mountPath: "/var/opt/app/grf"
+              name: grf
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 1000
+      volumes:
+        - name: grf
+          persistentVolumeClaim:
+            claimName: grf-claim
+        - name: save-data
+          persistentVolumeClaim:
+            claimName: save-data-claim
