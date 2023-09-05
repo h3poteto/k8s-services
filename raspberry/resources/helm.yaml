@@ -110,6 +110,8 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
+    deploymentStrategy:
+      type: Recreate
     service:
       enabled: true
       type: LoadBalancer
