@@ -43,6 +43,12 @@ spec:
               name: save-data
             - mountPath: "/var/opt/app/grf"
               name: grf
+            - mountPath: "/var/opt/app/auriga/config/import/char_conf.txt"
+              name: import-config
+              subPath: "char_conf.txt"
+            - mountPath: "/var/opt/app/auriga/config/import/map_conf.prod.txt"
+              name: import-config
+              subPath: "map_conf.prod.txt"
         - name: char
           image: sagisame-server
           args: ["./char-server", "--char-config", "./conf/char_auriga.conf", "--inter-config", "./conf/inter_auriga.conf"]
@@ -57,6 +63,12 @@ spec:
               name: save-data
             - mountPath: "/var/opt/app/grf"
               name: grf
+            - mountPath: "/var/opt/app/auriga/config/import/char_conf.txt"
+              name: import-config
+              subPath: "char_conf.txt"
+            - mountPath: "/var/opt/app/auriga/config/import/map_conf.prod.txt"
+              name: import-config
+              subPath: "map_conf.prod.txt"
         - name: map
           image: sagisame-server
           args: ["./map-server", "--map-config", "./conf/map_auriga.conf", "--battle-config", "./conf/battle_auriga.conf", "--atcommand-config", "./conf/atcommand_auriga.conf", "--script-config", "./conf/script_auriga.conf", "--msg-config", "./conf/msg_auriga.conf"]
@@ -71,6 +83,12 @@ spec:
               name: save-data
             - mountPath: "/var/opt/app/grf"
               name: grf
+            - mountPath: "/var/opt/app/auriga/config/import/char_conf.txt"
+              name: import-config
+              subPath: "char_conf.txt"
+            - mountPath: "/var/opt/app/auriga/config/import/map_conf.prod.txt"
+              name: import-config
+              subPath: "map_conf.prod.txt"
       securityContext:
         runAsUser: 1000
         fsGroup: 1000
@@ -81,3 +99,6 @@ spec:
         - name: save-data
           persistentVolumeClaim:
             claimName: save-data-claim
+        - name: import-config
+          configMap:
+            name: auriga-import

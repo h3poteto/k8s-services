@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auriga-import
+  labels:
+    name: auriga-import
+data:
+  char_conf.txt: |
+    login_ip: 127.0.0.1
+    login_port: 6900
+
+    char_ip: 192.168.10.136
+    char_port: 6121
+  map_conf.prod.txt: |
+    char_ip: 127.0.0.1
+    char_port: 6121
+
+    map_ip: 192.168.10.136
+    map_port: 5121

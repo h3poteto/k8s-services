@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: sagisame-server
 
 resources:
+- configmap.yaml
 - sealed-secrets.yaml
 - persistent-volume-claim.yaml
 - deployment.yaml
