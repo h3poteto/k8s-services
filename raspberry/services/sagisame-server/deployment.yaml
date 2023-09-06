@@ -43,10 +43,10 @@ spec:
               name: save-data
             - mountPath: "/var/opt/app/grf"
               name: grf
-            - mountPath: "/var/opt/app/auriga/config/import/char_conf.txt"
+            - mountPath: "/var/opt/app/auriga/conf/import/char_conf.txt"
               name: import-config
               subPath: "char_conf.txt"
-            - mountPath: "/var/opt/app/auriga/config/import/map_conf.prod.txt"
+            - mountPath: "/var/opt/app/auriga/conf/import/map_conf.prod.txt"
               name: import-config
               subPath: "map_conf.prod.txt"
         - name: char
@@ -63,10 +63,10 @@ spec:
               name: save-data
             - mountPath: "/var/opt/app/grf"
               name: grf
-            - mountPath: "/var/opt/app/auriga/config/import/char_conf.txt"
+            - mountPath: "/var/opt/app/auriga/conf/import/char_conf.txt"
               name: import-config
               subPath: "char_conf.txt"
-            - mountPath: "/var/opt/app/auriga/config/import/map_conf.prod.txt"
+            - mountPath: "/var/opt/app/auriga/conf/import/map_conf.prod.txt"
               name: import-config
               subPath: "map_conf.prod.txt"
         - name: map
@@ -83,10 +83,10 @@ spec:
               name: save-data
             - mountPath: "/var/opt/app/grf"
               name: grf
-            - mountPath: "/var/opt/app/auriga/config/import/char_conf.txt"
+            - mountPath: "/var/opt/app/auriga/conf/import/char_conf.txt"
               name: import-config
               subPath: "char_conf.txt"
-            - mountPath: "/var/opt/app/auriga/config/import/map_conf.prod.txt"
+            - mountPath: "/var/opt/app/auriga/conf/import/map_conf.prod.txt"
               name: import-config
               subPath: "map_conf.prod.txt"
       securityContext:
