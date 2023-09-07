@@ -12,4 +12,4 @@ resources:
 images:
 - name: nextjs
   newName: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/fedistarnet
-  newTag: sha-c747453d4971394f27de9052e960c08ab3186c29
+  newTag: sha-931836ef39fb4095ede8339261211f0d92e4ce5d
