@@ -33,3 +33,10 @@ metadata:
   name: sagisame-server
   labels:
     name: sagisame-server
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: database
+  labels:
+    name: database
