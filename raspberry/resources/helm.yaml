@@ -78,7 +78,7 @@ spec:
       interval: 1m
   values:
     alertmanager:
-      enabled: false
+      enabled: true
     prometheus-pushgateway:
       enabled: false
     server:
