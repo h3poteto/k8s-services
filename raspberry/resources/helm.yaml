@@ -179,3 +179,31 @@ spec:
         enableHttps: false
       admissionWebhooks:
         enabled: false
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: mariadb
+  namespace: flux-system
+spec:
+  interval: 1m
+  targetNamespace: database
+  chart:
+    spec:
+      chart: mariadb
+      version: '13.1.3'
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+      interval: 1m
+  values:
+    auth:
+      database: default
+      username: h3poteto
+      existingSecret: mariadb-secrets
+    primary:
+      persistence:
+        enabled: true
+        storageClass: longhorn
+        size: 32Gi
