@@ -92,7 +92,7 @@ spec:
         storageClass: longhorn
         size: 16Gi
     extraScrapeConfigs: |
-      - job_name: dht20
+      - job_name: raspberry-zero-w
         metrics_path: /metrics
         static_configs:
           - targets:
