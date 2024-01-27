@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: grafana-storage
+  name: data-postgresql
   finalizers:
     - kubernetes.io/pvc-protection
 spec:
@@ -10,9 +10,5 @@ spec:
   volumeMode: Filesystem
   resources:
     requests:
-      storage: 10Gi
+      storage: 32Gi
   storageClassName: longhorn
-  selector:
-    matchLabels:
-      target: grafana-storage
-      service: grafana

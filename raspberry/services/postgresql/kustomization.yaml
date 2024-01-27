@@ -5,4 +5,5 @@ namespace: database
 
 resources:
 - sealed-secrets.yaml
+- pvc.yaml
 - helm.yaml

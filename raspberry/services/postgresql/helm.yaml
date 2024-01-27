@@ -29,6 +29,7 @@ spec:
         replicationPasswordKey: replication-password
     primary:
       persistence:
+        existingClaim: data-postgresql
         size: 32Gi
     readReplicas:
       persistence:
