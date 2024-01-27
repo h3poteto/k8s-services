@@ -4,5 +4,7 @@ kind: Kustomization
 namespace: monitoring
 
 resources:
+- pv.yaml
+- pvc.yaml
 - sealed-secrets.yaml
 - helm.yaml
