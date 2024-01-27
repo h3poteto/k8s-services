@@ -3,7 +3,7 @@ kind: Kustomization
 
 namespace: metallb
 
-# resources:
-# - helm.yaml
-# - ipaddresspool.yaml
-# - l2advertisement.yaml
+resources:
+- helm.yaml
+- ipaddresspool.yaml
+- l2advertisement.yaml
