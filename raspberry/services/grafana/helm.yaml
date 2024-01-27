@@ -27,6 +27,7 @@ spec:
       enabled: true
       type: pvc
       storageClassName: longhorn
+      existingClaim: grafana-storage
     admin:
       existingSecret: "grafana-env"
       userKey: "ADMIN_USER"
