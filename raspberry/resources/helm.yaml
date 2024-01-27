@@ -214,3 +214,39 @@ spec:
         enabled: true
         storageClass: longhorn
         size: 32Gi
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: postgresql
+  namespace: flux-system
+spec:
+  interval: 1m
+  targetNamespace: database
+  chart:
+    spec:
+      chart: postgresql
+      version: '13.4.2'
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami
+        namespace: flux-system
+      interval: 1m
+  values:
+    global:
+      storageClass: longhorn
+
+    auth:
+      username: h3poteto
+      database: default
+      existingSecret: postgresql-secrets
+      secretKeys:
+        adminPasswordKey: postgres-password
+        userPasswordKey: password
+        replicationPasswordKey: replication-password
+    primary:
+      persistence:
+        size: 32Gi
+    readReplicas:
+      persistence:
+        size: 32Gi
