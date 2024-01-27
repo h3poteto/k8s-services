@@ -1,0 +1,38 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: prometheus
+spec:
+  interval: 1m
+  targetNamespace: monitoring
+  chart:
+    spec:
+      chart: prometheus
+      version: '25.10.0'
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+      interval: 1m
+  values:
+    alertmanager:
+      enabled: true
+    prometheus-pushgateway:
+      enabled: false
+    server:
+      ingress:
+        enabled: false
+      service:
+        enabled: true
+        type: ClusterIP
+      persistentVolume:
+        enabled: true
+        storageClass: longhorn
+        size: 16Gi
+    extraScrapeConfigs: |
+      - job_name: raspberry-zero-w
+        metrics_path: /metrics
+        static_configs:
+          - targets:
+            - 192.168.10.30:2112
