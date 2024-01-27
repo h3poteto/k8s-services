@@ -5,3 +5,4 @@ namespace: monitoring
 
 resources:
 - sealed-secrets.yaml
+- helm.yaml
