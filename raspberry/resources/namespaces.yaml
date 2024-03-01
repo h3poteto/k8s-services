@@ -40,3 +40,10 @@ metadata:
   name: database
   labels:
     name: database
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: immich
+  labels:
+    name: immich
