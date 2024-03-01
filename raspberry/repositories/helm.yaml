@@ -61,3 +61,12 @@ metadata:
 spec:
   interval: 5m
   url: https://charts.bitnami.com/bitnami
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: immich-charts
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: https://immich-app.github.io/immich-charts
