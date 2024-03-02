@@ -19,11 +19,6 @@ spec:
     global:
       storageClass: longhorn
 
-    image:
-      registry: ghcr.io
-      repository: h3poteto/postgresql
-      tag: 16.2.0
-
     auth:
       username: h3poteto
       database: default
