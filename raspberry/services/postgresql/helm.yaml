@@ -20,7 +20,8 @@ spec:
       storageClass: longhorn
 
     image:
-      repository: ghcr.io/h3poteto/postgresql
+      registry: ghcr.io
+      repository: h3poteto/postgresql
       tag: 16.2.0
 
     auth:
