@@ -30,7 +30,7 @@ spec:
           existingClaim: photo-library
 
     env:
-      DB_HOSTNAME: database-postgresql.database.svc.cluster.local
+      DB_HOSTNAME: database-pgvectors-postgresql.database.svc.cluster.local
       DB_USERNAME:
         valueFrom:
           secretKeyRef:
