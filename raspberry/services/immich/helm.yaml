@@ -59,13 +59,25 @@ spec:
           memory: 512M
       ingress:
         main:
-          enabled: false
+          enabled: true
+          annotations:
+            kubernetes.io/ingress.class: nginx
+            cert-manager.io/cluster-issuer: letsencrypt-issuer
+            nginx.ingress.kubernetes.io/proxy-body-size: "0"
+          hosts:
+            - host: immich.home.h3poteto.dev
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls:
+            - hosts:
+                - immich.home.h3poteto.dev
+              secretName: immich-tls-certificate
 
       service:
         main:
           enabled: true
           primary: true
-          type: LoadBalancer
           ports:
             http:
               enabled: true
