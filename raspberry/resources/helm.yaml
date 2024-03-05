@@ -104,6 +104,6 @@ spec:
         enabled: false
       service:
         type: LoadBalancer
-        enableHttps: false
+        enableHttps: true
       admissionWebhooks:
         enabled: false
