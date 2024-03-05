@@ -1,0 +1,35 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: external-dns
+  namespace: kube-system
+spec:
+  interval: 1m
+  targetNamespace: kube-system
+  chart:
+    spec:
+      chart: external-dns
+      version: '1.14.3'
+      sourceRef:
+        kind: HelmRepository
+        name: external-dns
+        namespace: flux-system
+      interval: 1m
+  values:
+    provider:
+      name: "aws"
+    domainFilters:
+      - home.h3poteto.dev
+    sources:
+      - ingress
+    env:
+      - name: AWS_SHARED_CREDENTIALS_FILE
+        value: /.aws/credentials
+    extraVolumeMounts:
+      - name: aws-credentials
+        mountPath: /.aws
+        readOnly: true
+    extraVolumes:
+      - name: aws-credentials
+        secret:
+          secretName: aws-credentials
