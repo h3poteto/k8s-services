@@ -6,3 +6,5 @@ namespace: kube-system
 resources:
 - sealed-secrets.yaml
 - helm.yaml
+- cluster-issuer.yaml
+- certificate.yaml
