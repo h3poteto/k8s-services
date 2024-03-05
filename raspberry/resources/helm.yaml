@@ -45,7 +45,7 @@ spec:
     ingress:
       enabled: true
       ingressClassName: nginx
-      host: "longhorn.h3poteto.local"
+      host: "longhorn.home.h3poteto.dev"
       annotations:
         # type of authentication
         nginx.ingress.kubernetes.io/auth-type: basic
