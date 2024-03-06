@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: gotosocial
+
+configMapGenerator:
+- name: gotosocial-config
+  literals:
+  - GTS_HOST=gotosocial.home.h3poteto.dev
+  - GTS_DB_TYPE=postgres
+  - GTS_DB_ADDRESS=database-postgresql.database.svc.cluster.local
+  - GTS_DB_DATABASE=gotosocial
+  - GTS_LETSENCRYPT_ENABLED="false"
+  - GTS_LETSENCRYPT_EMAIL_ADDRESS=""
+
+resources:
+- sealed-secrets.yaml
+- deployment.yaml
+- service.yaml
+- ingress.yaml
+
+images:
+- name: gotosocial
+  newName: superseriousbusiness/gotosocial
+  newTag: 0.14.0

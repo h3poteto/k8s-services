@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-issuer
+  name: gotosocial-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: gotosocial.home.h3poteto.dev
+    http:
+      paths:
+      - backend:
+          service:
+            name: gotosocial-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - gotosocial.home.h3poteto.dev
+    secretName: gotosocial-tls-certificate
