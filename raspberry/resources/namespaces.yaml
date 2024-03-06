@@ -47,3 +47,10 @@ metadata:
   name: immich
   labels:
     name: immich
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gotosocial
+  labels:
+    name: gotosocial

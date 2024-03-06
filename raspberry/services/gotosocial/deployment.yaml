@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gotosocial
+  labels:
+    app: gotosocial
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gotosocial
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: gotosocial
+    spec:
+      containers:
+        - name: gotosocial
+          image: gotosocial
+          resources:
+            requests:
+              cpu: 200m
+              memory: 300Mi
+            limits:
+              memory: 600Mi
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: gotosocial-config
+            - secretRef:
+                name: gotosocial-secrets
