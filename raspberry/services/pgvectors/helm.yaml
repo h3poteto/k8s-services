@@ -41,6 +41,10 @@ spec:
       persistence:
         existingClaim: data-pgvectors
         size: 32Gi
+      containerSecurityContext:
+        readOnlyRootFilesystem: false
     readReplicas:
       persistence:
         size: 32Gi
+      containerSecurityContext:
+        readOnlyRootFilesystem: false
