@@ -1,0 +1,48 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-issuer
+  name: frontend-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: livecamera.home.h3poteto.dev
+    http:
+      paths:
+      - backend:
+          service:
+            name: frontend-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - livecamera.home.h3poteto.dev
+    secretName: livecamera-frontend-tls-certificate
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-issuer
+  name: server-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: livecamera-server.home.h3poteto.dev
+    http:
+      paths:
+      - backend:
+          service:
+            name: server-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - livecamera-server.home.h3poteto.dev
+    secretName: livecamera-server-tls-certificate

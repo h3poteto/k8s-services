@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: livecamera
+
+resources:
+- deployment.yaml
+- service.yaml
+- ingress.yaml
+
+images:
+- name: livecamera-server
+  newName: ghcr.io/h3poteto/livecamera-server
+  newTag: master
+- name: livecamera-frontend
+  newName: ghcr.io/h3poteto/livecamera-frontend
+  newTag: master

@@ -1,0 +1,94 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server
+  labels:
+    app: server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: server
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: server
+    spec:
+      hostNetwork: true
+      containers:
+        - name: server
+          image: livecamera-server
+          resources:
+            requests:
+              cpu: 1
+              memory: 1000Mi
+            limits:
+              memory: 2000Mi
+          ports:
+            - name: http
+              containerPort: 4000
+              protocol: TCP
+            - name: rtc-0
+              containerPort: 48300
+              protocol: UDP
+            - name: rtc-1
+              containerPort: 48301
+              protocol: UDP
+            - name: rtc-2
+              containerPort: 48302
+              protocol: UDP
+            - name: rtc-3
+              containerPort: 48303
+              protocol: UDP
+            - name: rtc-4
+              containerPort: 48304
+              protocol: UDP
+            - name: rtc-5
+              containerPort: 48305
+              protocol: UDP
+            - name: rtc-6
+              containerPort: 48306
+              protocol: UDP
+            - name: rtc-7
+              containerPort: 48307
+              protocol: UDP
+          env:
+            - name: PUBLIC_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+            - name: NUM_CPU
+              value: "1"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: livecamera-frontend
+          resources:
+            requests:
+              cpu: 200m
+              memory: 300Mi
+            limits:
+              memory: 1000Mi
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
