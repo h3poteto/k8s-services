@@ -54,3 +54,10 @@ metadata:
   name: gotosocial
   labels:
     name: gotosocial
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: livecamera
+  labels:
+    name: livecamera
