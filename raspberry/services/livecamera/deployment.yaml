@@ -17,7 +17,6 @@ spec:
       labels:
         app: server
     spec:
-      hostNetwork: true
       containers:
         - name: server
           image: livecamera-server
