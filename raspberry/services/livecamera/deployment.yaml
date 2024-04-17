@@ -32,28 +32,28 @@ spec:
               containerPort: 4000
               protocol: TCP
             - name: rtc-0
-              containerPort: 48300
+              containerPort: 31300
               protocol: UDP
             - name: rtc-1
-              containerPort: 48301
+              containerPort: 31301
               protocol: UDP
             - name: rtc-2
-              containerPort: 48302
+              containerPort: 31302
               protocol: UDP
             - name: rtc-3
-              containerPort: 48303
+              containerPort: 31303
               protocol: UDP
             - name: rtc-4
-              containerPort: 48304
+              containerPort: 31304
               protocol: UDP
             - name: rtc-5
-              containerPort: 48305
+              containerPort: 31305
               protocol: UDP
             - name: rtc-6
-              containerPort: 48306
+              containerPort: 31306
               protocol: UDP
             - name: rtc-7
-              containerPort: 48307
+              containerPort: 31307
               protocol: UDP
           env:
             - name: PUBLIC_IP
