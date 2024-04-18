@@ -9,9 +9,9 @@ resources:
 - ingress.yaml
 
 images:
-- name: livecamera-server
-  newName: ghcr.io/h3poteto/livecamera-server
-  newTag: sha-1c4fea4
 - name: livecamera-frontend
   newName: ghcr.io/h3poteto/livecamera-frontend
-  newTag: sha-1c4fea4
+  newTag: sha-94c4b454d7235cea62e450b0217cb205f73e8fce
+- name: livecamera-server
+  newName: ghcr.io/h3poteto/livecamera-server
+  newTag: sha-94c4b454d7235cea62e450b0217cb205f73e8fce
