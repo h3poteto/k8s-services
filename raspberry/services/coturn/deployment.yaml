@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coturn
+  labels:
+    app: coturn
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coturn
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: coturn
+    spec:
+      containers:
+        - name: coturn
+          image: coturn
+          args: ["--min-port=32700", "--max-port=32712", "--log-file=stdout", "--external-ip=192.168.10.137", "--listening-ip=0.0.0.0"]
+          resources:
+            requests:
+              cpu: 500m
+              memory: 500Mi
+            limits:
+              memory: 1000Mi
+          ports:
+            - name: listening-tcp
+              containerPort: 3478
+              protocol: TCP
+            - name: listening-udp
+              containerPort: 3478
+              protocol: UDP
+            - name: tls-tcp
+              containerPort: 5349
+              protocol: TCP
+            - name: tls-udp
+              containerPort: 5349
+              protocol: UDP
+            - name: udp-0
+              containerPort: 32700
+              protocol: UDP
+            - name: udp-1
+              containerPort: 32701
+              protocol: UDP
+            - name: udp-2
+              containerPort: 32702
+              protocol: UDP
+            - name: udp-3
+              containerPort: 32703
+              protocol: UDP
+            - name: udp-4
+              containerPort: 32704
+              protocol: UDP
+            - name: udp-5
+              containerPort: 32705
+              protocol: UDP
+            - name: udp-6
+              containerPort: 32706
+              protocol: UDP
+            - name: udp-7
+              containerPort: 32707
+              protocol: UDP
+            - name: udp-8
+              containerPort: 32708
+              protocol: UDP
+            - name: udp-9
+              containerPort: 32709
+              protocol: UDP
+            - name: udp-10
+              containerPort: 32710
+              protocol: UDP
+            - name: udp-11
+              containerPort: 32711
+              protocol: UDP
+            - name: udp-12
+              containerPort: 32712
+              protocol: UDP
