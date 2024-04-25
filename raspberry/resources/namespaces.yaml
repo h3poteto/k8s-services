@@ -61,3 +61,10 @@ metadata:
   name: livecamera
   labels:
     name: livecamera
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ice
+  labels:
+    name: ice
