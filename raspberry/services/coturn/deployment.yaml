@@ -82,6 +82,6 @@ spec:
               containerPort: 32712
               protocol: UDP
       volumes:
-        - name: tunserver-conf
+        - name: turnserver-conf
           configMap:
             name: turnserver-conf
