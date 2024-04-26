@@ -26,68 +26,55 @@ spec:
     - name: udp-0
       port: 32700
       targetPort: 32700
-      nodePort: 32700
       protocol: UDP
     - name: udp-1
       port: 32701
       targetPort: 32701
-      nodePort: 32701
       protocol: UDP
     - name: udp-2
       port: 32702
       targetPort: 32702
-      nodePort: 32702
       protocol: UDP
     - name: udp-3
       port: 32703
       targetPort: 32703
-      nodePort: 32703
       protocol: UDP
     - name: udp-4
       port: 32704
       targetPort: 32704
-      nodePort: 32704
       protocol: UDP
     - name: udp-5
       port: 32705
       targetPort: 32705
-      nodePort: 32705
       protocol: UDP
     - name: udp-6
       port: 32706
       targetPort: 32706
-      nodePort: 32706
       protocol: UDP
     - name: udp-7
       port: 32707
       targetPort: 32707
-      nodePort: 32707
       protocol: UDP
     - name: udp-8
       port: 32708
       targetPort: 32708
-      nodePort: 32708
       protocol: UDP
     - name: udp-9
       port: 32709
       targetPort: 32709
-      nodePort: 32709
       protocol: UDP
     - name: udp-10
       port: 32710
       targetPort: 32710
-      nodePort: 32710
       protocol: UDP
     - name: udp-11
       port: 32711
       targetPort: 32711
-      nodePort: 32711
       protocol: UDP
     - name: udp-12
       port: 32712
       targetPort: 32712
-      nodePort: 32712
       protocol: UDP
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: coturn
