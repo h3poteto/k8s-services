@@ -22,6 +22,7 @@ spec:
       - home.h3poteto.dev
     sources:
       - ingress
+      - service
     env:
       - name: AWS_SHARED_CREDENTIALS_FILE
         value: /.aws/credentials
