@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: coturn-server-tls-certificate
+spec:
+  dnsNames:
+  - ice.home.h3poteto.dev
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: letsencrypt-issuer
+  secretName: coturn-server-tls-certificate
+  usages:
+  - digital signature
+  - key encipherment

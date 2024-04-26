@@ -29,6 +29,8 @@ spec:
             - mountPath: "/etc/turnserver.conf"
               name: turnserver-conf
               subPath: turnserver.conf
+            - mountPath: "/etc/pem"
+              name: tls-cert
           ports:
             - name: listening-tcp
               containerPort: 3478
@@ -85,3 +87,6 @@ spec:
         - name: turnserver-conf
           configMap:
             name: turnserver-conf
+        - name: tls-cert
+          secret:
+            secretName: coturn-server-tls-certificate
