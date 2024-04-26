@@ -19,13 +19,16 @@ spec:
       containers:
         - name: coturn
           image: coturn
-          args: ["--min-port=32700", "--max-port=32712", "--log-file=stdout", "--external-ip=192.168.10.137", "--listening-ip=0.0.0.0"]
           resources:
             requests:
               cpu: 500m
               memory: 500Mi
             limits:
               memory: 1000Mi
+          volumeMounts:
+            - mountPath: "/etc/turnserver.conf"
+              name: turnserver-conf
+              subPath: turnserver.conf
           ports:
             - name: listening-tcp
               containerPort: 3478
@@ -78,3 +81,7 @@ spec:
             - name: udp-12
               containerPort: 32712
               protocol: UDP
+      volumes:
+        - name: tunserver-conf
+          configMap:
+            name: turnserver-conf
