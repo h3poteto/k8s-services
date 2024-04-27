@@ -22,46 +22,50 @@ spec:
       port: 80
       targetPort: 4000
       protocol: TCP
+  type: ClusterIP
+  selector:
+    app: server
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: server-udp
+  annotations:
+    metallb.universe.tf/loadBalancerIPs: 192.168.10.138
+spec:
+  ports:
     - name: rtc-0
       port: 31300
       targetPort: 31300
-      nodePort: 31300
       protocol: UDP
     - name: rtc-1
       port: 31301
       targetPort: 31301
-      nodePort: 31301
       protocol: UDP
     - name: rtc-2
       port: 31302
       targetPort: 31302
-      nodePort: 31302
       protocol: UDP
     - name: rtc-3
       port: 31303
       targetPort: 31303
-      nodePort: 31303
       protocol: UDP
     - name: rtc-4
       port: 31304
       targetPort: 31304
-      nodePort: 31304
       protocol: UDP
     - name: rtc-5
       port: 31305
       targetPort: 31305
-      nodePort: 31305
       protocol: UDP
     - name: rtc-6
       port: 31306
       targetPort: 31306
-      nodePort: 31306
       protocol: UDP
     - name: rtc-7
       port: 31307
       targetPort: 31307
-      nodePort: 31307
       protocol: UDP
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: server

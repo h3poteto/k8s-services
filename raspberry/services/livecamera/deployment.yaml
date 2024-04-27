@@ -56,9 +56,7 @@ spec:
               protocol: UDP
           env:
             - name: PUBLIC_IP
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.hostIP
+              value: "192.168.10.138"
             - name: NUM_CPU
               value: "1"
 ---
