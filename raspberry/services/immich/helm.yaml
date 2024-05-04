@@ -29,6 +29,7 @@ spec:
         library:
           existingClaim: photo-library
 
+    # Refs: https://github.com/bjw-s/helm-charts/blob/923ef40a39520979c98f354ea23963ee54f54433/charts/library/common/values.yaml
     env:
       DB_HOSTNAME: database-pgvectors-postgresql.database.svc.cluster.local
       DB_USERNAME:
@@ -55,7 +56,7 @@ spec:
     server:
       resources:
         requests:
-          cpu: 15m
+          cpu: 150m
           memory: 512M
       ingress:
         main:
@@ -92,6 +93,17 @@ spec:
         requests:
           cpu: 100m
           memory: 2048M
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app.kubernetes.io/name
+                operator: In
+                values:
+                  - server
+            # To read the same PVC, schedule this to the same node
+            topologyKey: kubernetes.io/hostname
 
     machine-learning:
       resources:
