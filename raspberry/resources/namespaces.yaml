@@ -68,3 +68,10 @@ metadata:
   name: ice
   labels:
     name: ice
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rss-post
+  labels:
+    name: rss-post
