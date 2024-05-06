@@ -1,0 +1,38 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: rss-post
+  labels:
+    app: rss-post
+spec:
+  schedule: "18 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            job: rss-post
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: rss-post
+              image: rss-post
+              imagePullPolicy: Always
+              env:
+                - name: REDIS_HOST
+                  value: "redis.rss-post"
+                - name: REDIS_PORT
+                  value: "6379"
+                - name: POST_URL
+                  value: "https://pleroma.io/api/v1/statuses"
+              envFrom:
+                - secretRef:
+                    name: rss-post-env
+              resources:
+                requests:
+                  memory: 200Mi
+                  cpu: 100m
+                limits:
+                  memory: 800Mi
+
+      backoffLimit: 3
