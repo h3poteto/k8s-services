@@ -13,4 +13,4 @@ resources:
 images:
 - name: rss-post
   newName: ghcr.io/h3poteto/rss-post
-  newTag: sha-da3a97822b247034b5767f3e56973ca5e987cba2
+  newTag: sha-234c8fa70546b990dfb3e0eb518907a2d6c46d35
