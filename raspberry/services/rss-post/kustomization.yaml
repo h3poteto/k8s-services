@@ -8,7 +8,6 @@ resources:
 - sealed-secrets.yaml
 - statefulset.yaml
 - service.yaml
-- cronjob.yaml
 
 images:
 - name: rss-post
