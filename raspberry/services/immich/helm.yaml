@@ -86,25 +86,6 @@ spec:
               port: 3001
               protocol: HTTP
 
-    microservices:
-      controller:
-        replicas: 1
-      resources:
-        requests:
-          cpu: 100m
-          memory: 2048M
-      affinity:
-        podAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: app.kubernetes.io/name
-                operator: In
-                values:
-                  - server
-            # To read the same PVC, schedule this to the same node
-            topologyKey: kubernetes.io/hostname
-
     machine-learning:
       resources:
         requests:
