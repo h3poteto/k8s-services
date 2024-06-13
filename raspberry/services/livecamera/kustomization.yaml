@@ -11,7 +11,7 @@ resources:
 images:
 - name: livecamera-frontend
   newName: ghcr.io/h3poteto/livecamera-frontend
-  newTag: sha-74986d03d56e08db8396f76c725aec544670d26b
+  newTag: sha-0b4f7e916e6d9fe71c9ff42512b77a82298afc3c
 - name: livecamera-server
   newName: ghcr.io/h3poteto/livecamera-server
-  newTag: sha-74986d03d56e08db8396f76c725aec544670d26b
+  newTag: sha-0b4f7e916e6d9fe71c9ff42512b77a82298afc3c
