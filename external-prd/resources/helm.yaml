@@ -37,7 +37,7 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
-    clusterName: external-prod-20240220.k8s.h3poteto.dev
+    clusterName: external-20240620.k8s.h3poteto.dev
     serviceAccount:
       create: true
       annotations:
@@ -133,9 +133,9 @@ spec:
           surplusNodes: 0
           enableReplenish: false
           autoScalingGroups:
-            - name: control-plane-ap-northeast-1a.masters.external-prod-20240220.k8s.h3poteto.dev
-            - name: control-plane-ap-northeast-1c.masters.external-prod-20240220.k8s.h3poteto.dev
-            - name: control-plane-ap-northeast-1d.masters.external-prod-20240220.k8s.h3poteto.dev
+            - name: control-plane-ap-northeast-1a.masters.external-20240620.k8s.h3poteto.dev
+            - name: control-plane-ap-northeast-1c.masters.external-20240620.k8s.h3poteto.dev
+            - name: control-plane-ap-northeast-1d.masters.external-20240620.k8s.h3poteto.dev
         workers:
           desired: 3
           asgModifyCoolTimeSeconds: 300
@@ -144,6 +144,6 @@ spec:
           surplusNodes: 1
           enableReplenish: false
           autoScalingGroups:
-            - name: nodes-ap-northeast-1a.external-prod-20240220.k8s.h3poteto.dev
-            - name: nodes-ap-northeast-1c.external-prod-20240220.k8s.h3poteto.dev
-            - name: nodes-ap-northeast-1d.external-prod-20240220.k8s.h3poteto.dev
+            - name: nodes-ap-northeast-1a.external-20240620.k8s.h3poteto.dev
+            - name: nodes-ap-northeast-1c.external-20240620.k8s.h3poteto.dev
+            - name: nodes-ap-northeast-1d.external-20240620.k8s.h3poteto.dev
