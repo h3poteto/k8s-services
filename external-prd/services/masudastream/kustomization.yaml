@@ -12,4 +12,4 @@ resources:
 images:
 - name: elixir
   newName: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/masudastream
-  newTag: sha-4fd9c0ecb8334433df406357fa23532560243a33
+  newTag: sha-4803b16d5cceef25b07b89377d82828cab81a6c0
