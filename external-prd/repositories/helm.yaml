@@ -34,3 +34,12 @@ metadata:
 spec:
   interval: 5m
   url: https://h3poteto.github.io/charts/stable
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: jaegertracing
+  namespace: flux-system
+spec:
+  interval: 5m
+  url: https://jaegertracing.github.io/helm-charts
