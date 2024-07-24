@@ -4,4 +4,9 @@ kind: Kustomization
 namespace: monitoring
 
 resources:
+- external-secrets.yaml
 - helm.yaml
+
+images:
+- name: quay.io/oauth2-proxy/oauth2-proxy
+  newTag: v7.6.0
