@@ -138,3 +138,17 @@ spec:
   path: ./external-prd/services/jaeger
   interval: 1m
   prune: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: open-telemetry
+  namespace: flux-system
+spec:
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  path: ./external-prd/services/open-telemetry
+  interval: 1m
+  prune: true
