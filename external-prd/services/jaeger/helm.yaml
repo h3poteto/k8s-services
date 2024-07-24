@@ -35,7 +35,7 @@ spec:
           upstreams =  ["http://localhost:16686"]
           github_user = "h3poteto"
           scope = "user:email read:user"
-          email_domain = "*"
+          email_domains = ["*"]
           cookie_secure = true
           reverse_proxy = true
         extraEnv:
@@ -54,6 +54,8 @@ spec:
               secretKeyRef:
                 name: oauth-proxy
                 key: OAUTH2_PROXY_COOKIE_SECRET
+          - name: OAUTH2_PROXY_EMAIL_DOMAINS
+            value: "*"
       resources:
         limits:
           memory: 512Mi
