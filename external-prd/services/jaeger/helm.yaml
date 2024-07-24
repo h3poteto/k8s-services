@@ -29,16 +29,23 @@ spec:
     query:
       oAuthSidecar:
         enabled: true
-        config: |-
-          provider = "github"
-          http_address = "http://:80"
-          upstreams =  ["http://localhost:16686"]
-          github_user = "h3poteto"
-          scope = "user:email read:user"
-          email_domains = ["*"]
-          cookie_secure = true
-          reverse_proxy = true
         extraEnv:
+          - name: OAUTH2_PROXY_HTTP_ADDRESS
+            value: "http://:80"
+          - name: OAUTH2_PROXY_UPSTREAMS
+            value: "http://localhost:16686"
+          - name: OAUTH2_PROXY_PROVIDER
+            value: "github"
+          - name: OAUTH2_PROXY_GITHUB_USER
+            value: "h3poteto"
+          - name: OAUTH2_PROXY_SCOPE
+            value: "user:email read:user"
+          - name: OAUTH2_PROXY_EMAIL_DOMAINS
+            value: "*"
+          - name: OAUTH2_PROXY_COOKIE_SECURE
+            value: "true"
+          - name: OAUTH2_PROXY_REVERSE_PROXY
+            value: "true"
           - name: OAUTH2_PROXY_CLIENT_ID
             valueFrom:
               secretKeyRef:
@@ -54,8 +61,7 @@ spec:
               secretKeyRef:
                 name: oauth-proxy
                 key: OAUTH2_PROXY_COOKIE_SECRET
-          - name: OAUTH2_PROXY_EMAIL_DOMAINS
-            value: "*"
+
       resources:
         limits:
           memory: 512Mi
@@ -69,4 +75,3 @@ spec:
         requests:
           cpu: 500m
           memory: 512Mi
-
