@@ -16,17 +16,12 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
+    provisionDataStore:
+      cassandra: false
+      elasticsearch: false
+      kafka: false
     storage:
-      type: cassandra
-    cassandra:
-      persistence:
-        enabled: false
-      resources:
-        limits:
-          memory: 4Gi
-        requests:
-          cpu: 1
-          memory: 2Gi
+      type: memory
     ingress:
       enabled: false
     agent:
@@ -34,7 +29,6 @@ spec:
     query:
       resources:
         limits:
-          cpu: 500m
           memory: 512Mi
         requests:
           cpu: 250m
@@ -42,8 +36,7 @@ spec:
     collector:
       resources:
         limits:
-          cpu: 1
-          memory: 1Gi
+          memory: 2Gi
         requests:
           cpu: 500m
           memory: 512Mi
