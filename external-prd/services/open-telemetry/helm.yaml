@@ -18,10 +18,7 @@ spec:
   values:
     mode: "deployment"
     image:
-      repository: "otel/opentelemetry-collector"
-    command:
-      name: "otelcol"
-      extraArgs: []
+      repository: "otel/opentelemetry-collector-contrib"
     config:
       exporters:
         jaeger:
