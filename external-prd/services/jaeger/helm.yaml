@@ -28,12 +28,12 @@ spec:
       enabled: false
     query:
       service:
-        port: 8080
+        port: 4180
       oAuthSidecar:
         enabled: true
         extraEnv:
           - name: OAUTH2_PROXY_HTTP_ADDRESS
-            value: "http://:8080"
+            value: "http://:4180"
           - name: OAUTH2_PROXY_UPSTREAMS
             value: "http://localhost:16686"
           - name: OAUTH2_PROXY_PROVIDER
