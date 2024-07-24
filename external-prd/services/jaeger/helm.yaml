@@ -21,6 +21,12 @@ spec:
     cassandra:
       persistence:
         enabled: false
+      resources:
+        limits:
+          memory: 4Gi
+        requests:
+          cpu: 1
+          memory: 2Gi
     ingress:
       enabled: false
     agent:
