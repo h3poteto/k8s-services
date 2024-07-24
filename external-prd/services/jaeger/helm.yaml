@@ -35,7 +35,7 @@ spec:
           upstreams =  ["http://localhost:16686"]
           github_user = "h3poteto"
           scope = "user:email read:user"
-          email_domains = ["*"]
+          email_domain = "*"
           cookie_secure = true
           reverse_proxy = true
         extraEnv:
