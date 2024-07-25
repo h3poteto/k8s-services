@@ -29,6 +29,8 @@ spec:
           env:
             - name: DB_HOSTNAME
               value: nyaruko.cju8robzjmqc.ap-northeast-1.rds.amazonaws.com
+            - name: OTEL_EXPORTER_ENDPOINT
+              value: "http://monitoring-jaeger-collector.monitoring.svc.cluster.local:4318"
       containers:
         - name: phoenix
           image: elixir
