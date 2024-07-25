@@ -71,6 +71,14 @@ spec:
           cpu: 250m
           memory: 128Mi
     collector:
+      service:
+        otlp:
+          grpc:
+            name: otlp-grpc
+            port: 4317
+          http:
+            name: otlp-http
+            port: 4318
       resources:
         limits:
           memory: 2Gi
