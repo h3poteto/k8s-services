@@ -21,7 +21,13 @@ spec:
       elasticsearch: false
       kafka: false
     storage:
-      type: memory
+      type: badger
+      badger:
+        ephemeral: true
+        persistence:
+          mountPath: /mnt/data
+          useExistingPvcName: ""
+        extraEnv: []
     ingress:
       enabled: false
     agent:
