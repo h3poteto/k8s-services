@@ -4,7 +4,7 @@ metadata:
   name: jaeger
 spec:
   serviceRef:
-    name: monitoring-jaeger-query
-    port: 4180
+    name: oauth-proxy
+    port: 8080
   targetGroupARN: arn:aws:elasticloadbalancing:ap-northeast-1:564677439943:targetgroup/jaeger/30ac5e3011ad368b
   targetType: ip
