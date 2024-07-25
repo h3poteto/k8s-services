@@ -28,69 +28,31 @@ spec:
           mountPath: /mnt/data
           useExistingPvcName: ""
         extraEnv: []
+
+    allInOne:
+      enabled: true
+      service:
+        headless: true
+        collector:
+          otlp:
+            grpc:
+              name: otlp-grpc
+            http:
+              name: otlp-http
+      ingress:
+        enabled: false
+      resources:
+        limits:
+          memory: 2400Mi
+        requests:
+          cpu: 500m
+          memory: 512Mi
+
     ingress:
       enabled: false
     agent:
       enabled: false
-    query:
-      service:
-        port: 4180
-      oAuthSidecar:
-        enabled: true
-        extraEnv:
-          - name: OAUTH2_PROXY_HTTP_ADDRESS
-            value: "http://:4180"
-          - name: OAUTH2_PROXY_UPSTREAMS
-            value: "http://localhost:16686"
-          - name: OAUTH2_PROXY_PROVIDER
-            value: "github"
-          - name: OAUTH2_PROXY_GITHUB_USER
-            value: "h3poteto"
-          - name: OAUTH2_PROXY_SCOPE
-            value: "user:email read:user read:org"
-          - name: OAUTH2_PROXY_EMAIL_DOMAINS
-            value: "*"
-          - name: OAUTH2_PROXY_COOKIE_SECURE
-            value: "true"
-          - name: OAUTH2_PROXY_REVERSE_PROXY
-            value: "true"
-          - name: OAUTH2_PROXY_CLIENT_ID
-            valueFrom:
-              secretKeyRef:
-                name: oauth-proxy
-                key: OAUTH2_PROXY_CLIENT_ID
-          - name: OAUTH2_PROXY_CLIENT_SECRET
-            valueFrom:
-              secretKeyRef:
-                name: oauth-proxy
-                key: OAUTH2_PROXY_CLIENT_SECRET
-          - name: OAUTH2_PROXY_COOKIE_SECRET
-            valueFrom:
-              secretKeyRef:
-                name: oauth-proxy
-                key: OAUTH2_PROXY_COOKIE_SECRET
-
-      resources:
-        limits:
-          memory: 512Mi
-        requests:
-          cpu: 250m
-          memory: 128Mi
     collector:
-      extraEnv:
-        - name: COLLECTOR_LOG_LEVEL
-          value: "debug"
-      service:
-        otlp:
-          grpc:
-            name: otlp-grpc
-            port: 4317
-          http:
-            name: otlp-http
-            port: 4318
-      resources:
-        limits:
-          memory: 2Gi
-        requests:
-          cpu: 500m
-          memory: 512Mi
+      enabled: false
+    query:
+      enabled: false

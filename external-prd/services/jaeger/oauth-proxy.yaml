@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oauth-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oauth-proxy
+  template:
+    metadata:
+      name: oauth-proxy
+      labels:
+        app: oauth-proxy
+    spec:
+      containers:
+        - name: oauth-proxy
+          image: oauth2-proxy
+          ports:
+            - name: http
+              containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: oauth-proxy
+            - secretRef:
+                name: oauth-proxy
