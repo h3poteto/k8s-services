@@ -71,6 +71,9 @@ spec:
           cpu: 250m
           memory: 128Mi
     collector:
+      extraEnv:
+        - name: COLLECTOR_LOG_LEVEL
+          value: "debug"
       service:
         otlp:
           grpc:
