@@ -9,7 +9,7 @@ configMapGenerator:
   - OAUTH2_PROXY_HTTP_ADDRESS='http://:8080'
   - OAUTH2_PROXY_UPSTREAMS='http://monitoring-jaeger-query:16686/'
   - OAUTH2_PROXY_PROVIDER=github
-  - OAUTH2_PROXY_GITHUB_ORG=h3poteto
+  - OAUTH2_PROXY_GITHUB_ORG=""
   - OAUTH2_PROXY_GITHUB_USER=h3poteto
   - OAUTH2_PROXY_SCOPE="user:email read:user read:org"
   - OAUTH2_PROXY_EMAIL_DOMAINS='*'
