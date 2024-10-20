@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: page-scrape
+  labels:
+    app: page-scrape
+spec:
+  schedule: "*/10 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            job: page-scrape
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: scrape
+              image: scrape
+              imagePullPolicy: Always
+              envFrom:
+                - secretRef:
+                    name: page-scrape-env
+              resources:
+                requests:
+                  memory: 200Mi
+                  cpu: 100m
+                limits:
+                  memory: 800Mi
+
+      backoffLimit: 3
