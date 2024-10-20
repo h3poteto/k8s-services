@@ -75,3 +75,10 @@ metadata:
   name: rss-post
   labels:
     name: rss-post
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: page-scrape
+  labels:
+    name: page-scrape
