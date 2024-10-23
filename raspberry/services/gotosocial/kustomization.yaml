@@ -22,4 +22,4 @@ resources:
 images:
 - name: gotosocial
   newName: superseriousbusiness/gotosocial
-  newTag: 0.16.0
+  newTag: 0.17.1
