@@ -12,4 +12,4 @@ resources:
 images:
 - name: nextjs
   newName: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/whalebirdsocial
-  newTag: sha-7ecdcb8787248dd0f516894139b1ce9692b0c0b8
+  newTag: sha-b5f9484e66bbdc49da88b79e9aa13f71e5cbb16f
