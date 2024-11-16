@@ -26,6 +26,10 @@
   ],
   "packageRules": [
     {
+      "matchPaths": ["raspberry/flux/**", "external-prd/flux/**"],
+      "enabled": false
+    },
+    {
       "additionalBranchPrefix": "{{baseDir}}-",
       "commitMessagePrefix": "raspberry: ",
       "matchPackagePatterns": ["*"],
