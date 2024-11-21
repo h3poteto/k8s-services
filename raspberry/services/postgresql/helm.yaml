@@ -19,6 +19,9 @@ spec:
     global:
       storageClass: longhorn
 
+    image:
+      tag: 16.4.0-debian-12-r14
+
     auth:
       username: h3poteto
       database: default
