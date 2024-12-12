@@ -12,7 +12,7 @@ spec:
       version: '16.3.0'
       sourceRef:
         kind: OCIRepository
-        name: bitnami
+        name: postgresql
         namespace: flux-system
       interval: 1m
   values:
