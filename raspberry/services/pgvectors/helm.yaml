@@ -16,6 +16,8 @@ spec:
       tag: pg16-v0.2.0
 
     global:
+      security:
+        allowInsecureImages: true
       storageClass: longhorn
 
     auth:
