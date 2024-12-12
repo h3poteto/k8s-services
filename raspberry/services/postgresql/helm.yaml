@@ -6,15 +6,9 @@ metadata:
 spec:
   interval: 1m
   targetNamespace: database
-  chart:
-    spec:
-      chart: postgresql
-      version: '16.3.0'
-      sourceRef:
-        kind: OCIRepository
-        name: postgresql
-        namespace: flux-system
-      interval: 1m
+  chartRef:
+    kind: OCIRepository
+    name: postgresql
   values:
     global:
       storageClass: longhorn
