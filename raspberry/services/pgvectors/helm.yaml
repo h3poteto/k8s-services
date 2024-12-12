@@ -9,6 +9,7 @@ spec:
   chartRef:
     kind: OCIRepository
     name: postgresql
+    namespace: flux-system
   values:
     image:
       repository: tensorchord/pgvecto-rs
