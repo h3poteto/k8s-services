@@ -8,4 +8,4 @@ spec:
   interval: 10m
   url: oci://registry-1.docker.io/bitnamicharts/postgresql
   ref:
-    semver: ">16.0.0"
+    semver: "16.3.0"
