@@ -110,7 +110,7 @@ spec:
   chart:
     spec:
       chart: node-manager
-      version: '0.4.2'
+      version: '0.4.3'
       sourceRef:
         kind: HelmRepository
         name: h3poteto-stable
