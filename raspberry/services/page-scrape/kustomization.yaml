@@ -5,7 +5,6 @@ namespace: page-scrape
 
 resources:
 - sealed-secrets.yaml
-- cronjob.yaml
 
 images:
 - name: scrape
