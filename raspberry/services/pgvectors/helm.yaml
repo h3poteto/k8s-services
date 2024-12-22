@@ -40,6 +40,13 @@ spec:
         size: 32Gi
       containerSecurityContext:
         readOnlyRootFilesystem: false
+      resources:
+        requests:
+          cpu: 500m
+          memory: 2048Mi
+        limits:
+          cpu: 750m
+          memory: 2048Mi
     readReplicas:
       persistence:
         size: 32Gi
