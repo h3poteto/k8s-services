@@ -34,6 +34,12 @@ spec:
           envFrom:
             - secretRef:
                 name: pleromaio-env
+          resources:
+            requests:
+              memory: 800Mi
+              cpu: 200m
+            limits:
+              memory: 1800Mi
       containers:
         - name: phoenix
           image: phoenix
