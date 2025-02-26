@@ -36,10 +36,10 @@ spec:
                 name: pleromaio-env
           resources:
             requests:
-              memory: 3600Mi
+              memory: 7200Mi
               cpu: 200m
             limits:
-              memory: 3600Mi
+              memory: 7200Mi
       containers:
         - name: phoenix
           image: phoenix
