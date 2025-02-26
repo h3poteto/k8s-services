@@ -36,7 +36,7 @@ spec:
                 name: pleromaio-env
           resources:
             requests:
-              memory: 1800Mi
+              memory: 2800Mi
               cpu: 200m
             limits:
               memory: 2800Mi
