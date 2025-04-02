@@ -8,5 +8,5 @@ resources:
 
 images:
 - name: scrape
-  newName: ghcr.io/h3poteto/page-scrape
-  newTag: master
+  newName: registry.gitlab.com/h3poteto/page-scrape
+  newTag: 37b0945e
