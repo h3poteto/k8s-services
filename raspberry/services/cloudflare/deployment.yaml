@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudflared
+  labels:
+    app: cloudflared
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudflared
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: cloudflared
+    spec:
+      containers:
+        - name: cloudflared
+          image: cloudflared
+          args:
+            - tunnel
+            - --no-autoupdate
+            - run
+            - --token
+            - $TOKEN
+          resources:
+            requests:
+              cpu: 200m
+              memory: 300Mi
+            limits:
+              memory: 600Mi
+          envFrom:
+            - secretRef:
+                name: cloudflare-secrets

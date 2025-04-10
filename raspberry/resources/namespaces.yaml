@@ -82,3 +82,10 @@ metadata:
   name: page-scrape
   labels:
     name: page-scrape
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cloudflare
+  labels:
+    name: cloudflare
