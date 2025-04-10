@@ -24,7 +24,7 @@ spec:
             - --no-autoupdate
             - run
             - --token
-            - $TOKEN
+            - "$(TOKEN)"
           resources:
             requests:
               cpu: 200m
