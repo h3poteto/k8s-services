@@ -26,6 +26,8 @@ spec:
     env:
       - name: AWS_SHARED_CREDENTIALS_FILE
         value: /.aws/credentials
+      - name: AWS_DEFAULT_REGION
+        value: ap-northeast-1
     extraVolumeMounts:
       - name: aws-credentials
         mountPath: /.aws
