@@ -4,6 +4,7 @@ metadata:
   name: pi-hole
   annotations:
     metallb.universe.tf/loadBalancerIPs: 192.168.10.254
+    external-dns.alpha.kubernetes.io/hostname: dns.home.h3poteto.dev
 spec:
   ports:
     - name: dns-tcp
