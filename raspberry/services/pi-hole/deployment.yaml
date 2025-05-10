@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pi-hole
+  labels:
+    app: pi-hole
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pi-hole
+  template:
+    metadata:
+      labels:
+        app: pi-hole
+    spec:
+      containers:
+        - name: pi-hole
+          image: pihole
+          resources:
+            requests:
+              cpu: 200m
+              memory: 300Mi
+            limits:
+              memory: 600Mi
+          ports:
+            - name: dns-tcp
+              containerPort: 53
+              protocol: TCP
+            - name: dns-udp
+              containerPort: 53
+              protocol: UDP
+            - name: http
+              containerPort: 80
+              protocol: TCP
+            - name: https
+              containerPort: 443
+              protocol: TCP
+          env:
+            - name: TZ
+              value: "Asia/Tokyo"
+            - name: FTLCONF_dns_listeningMode
+              value: all
+          envFrom:
+            - secretRef:
+                name: pihole-secrets
