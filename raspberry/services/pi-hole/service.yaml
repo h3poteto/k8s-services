@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: pi-hole
   annotations:
-    metallb.universe.tf/loadBalancerIPs: 192.168.10.255
+    metallb.universe.tf/loadBalancerIPs: 192.168.10.254
 spec:
   ports:
     - name: dns-tcp
