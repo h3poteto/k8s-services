@@ -14,6 +14,10 @@ spec:
       labels:
         app: pi-hole
     spec:
+      volumes:
+        - name: etc-pihole
+          persistentVolumeClaim:
+            claimName: etc-pihole
       containers:
         - name: pi-hole
           image: pihole
@@ -44,3 +48,6 @@ spec:
           envFrom:
             - secretRef:
                 name: pihole-secrets
+          volumeMounts:
+            - mountPath: "/etc/pihole"
+              name: etc-pihole
