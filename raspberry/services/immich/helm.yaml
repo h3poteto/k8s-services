@@ -53,6 +53,9 @@ spec:
       # renovate: datasource=github-releases depName=immich-app/immich
       tag: "v1.134.0"
 
+    controller:
+      strategy: Recreate
+
     server:
       resources:
         requests:
