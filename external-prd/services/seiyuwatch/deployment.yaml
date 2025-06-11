@@ -17,6 +17,10 @@ spec:
     metadata:
       labels:
         app: seiyuwatch
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "9568"
     spec:
       serviceAccountName: seiyuwatch-sa
       securityContext:
@@ -38,6 +42,9 @@ spec:
           ports:
             - name: http-port
               containerPort: 8080
+              protocol: TCP
+            - name: prometheus-port
+              containerPort: 9568
               protocol: TCP
           envFrom:
             - configMapRef:
