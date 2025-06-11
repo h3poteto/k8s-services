@@ -17,6 +17,10 @@ spec:
     metadata:
       labels:
         app: masudastream
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "9568"
     spec:
       initContainers:
         - name: migration
@@ -38,6 +42,9 @@ spec:
           ports:
             - name: http-port
               containerPort: 4000
+              protocol: TCP
+            - name: prometheus-port
+              containerPort: 9568
               protocol: TCP
           envFrom:
             - secretRef:
