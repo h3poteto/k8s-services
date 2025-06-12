@@ -17,6 +17,10 @@ spec:
     metadata:
       labels:
         app: pleromaio
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "9568"
     spec:
       serviceAccountName: pleromaio-sa
       securityContext:
@@ -47,6 +51,9 @@ spec:
           ports:
             - name: phoenix-port
               containerPort: 4000
+              protocol: TCP
+            - name: prometheus
+              containerPort: 9568
               protocol: TCP
           env:
             - name: AWS_REGION
