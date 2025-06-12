@@ -168,9 +168,3 @@ data:
           source_labels:
           - __meta_kubernetes_pod_name
           target_label: kubernetes_pod_name
-
-      - job_name: 'beam'
-        metrics_path: /api/pleroma/app_metrics
-        scheme: https
-        static_configs:
-          - targets: ['pleroma.io']
