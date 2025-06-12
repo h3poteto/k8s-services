@@ -13,4 +13,4 @@ resources:
 images:
 - name: pihole
   newName: ghcr.io/pi-hole/pihole
-  newTag: 2025.06.1
+  newTag: 2025.06.2
