@@ -20,7 +20,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./external-prd/flux
+  path: ./external/flux
   prune: true
   sourceRef:
     kind: GitRepository

@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
-  path: ./external-prd/resources
+  path: ./external/resources
   prune: true
   sourceRef:
     kind: GitRepository
@@ -19,7 +19,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./external-prd/repositories
+  path: ./external/repositories
   prune: true
   sourceRef:
     kind: GitRepository

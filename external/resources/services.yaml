@@ -9,7 +9,7 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./external-prd/services/external-secrets
+  path: ./external/services/external-secrets
   interval: 1m
   prune: true
 ---
@@ -23,7 +23,7 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./external-prd/services/fedistarnet
+  path: ./external/services/fedistarnet
   interval: 1m
   prune: true
 ---
@@ -37,7 +37,7 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./external-prd/services/grafana
+  path: ./external/services/grafana
   interval: 1m
   prune: true
 ---
@@ -51,7 +51,7 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./external-prd/services/maintenance/scheduled
+  path: ./external/services/maintenance/scheduled
   interval: 1m
   prune: true
 ---
@@ -65,7 +65,7 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./external-prd/services/masudastream
+  path: ./external/services/masudastream
   interval: 1m
   prune: true
 ---
@@ -79,7 +79,7 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./external-prd/services/prometheus
+  path: ./external/services/prometheus
   interval: 1m
   prune: true
 ---
@@ -93,7 +93,7 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./external-prd/services/pleromaio
+  path: ./external/services/pleromaio
   interval: 1m
   prune: true
 ---
@@ -107,7 +107,7 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./external-prd/services/seiyuwatch
+  path: ./external/services/seiyuwatch
   interval: 1m
   prune: true
 ---
@@ -121,7 +121,7 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./external-prd/services/whalebirdsocial
+  path: ./external/services/whalebirdsocial
   interval: 1m
   prune: true
 ---
@@ -135,6 +135,6 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./external-prd/services/jaeger
+  path: ./external/services/jaeger
   interval: 1m
   prune: true
