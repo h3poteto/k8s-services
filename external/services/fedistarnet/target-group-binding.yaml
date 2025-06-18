@@ -6,5 +6,5 @@ spec:
   serviceRef:
     name: fedistarnet-service
     port: 80
-  targetGroupARN: arn:aws:elasticloadbalancing:ap-northeast-1:564677439943:targetgroup/fedistar-prd/f76de51f0dff9fb0
-  targetType: ip
+  targetGroupARN: arn:aws:elasticloadbalancing:ap-northeast-1:564677439943:targetgroup/fedistar/8bc8e73c7e22e03e
+  targetType: instance

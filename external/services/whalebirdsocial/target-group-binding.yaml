@@ -6,5 +6,5 @@ spec:
   serviceRef:
     name: whalebird-service
     port: 80
-  targetGroupARN: arn:aws:elasticloadbalancing:ap-northeast-1:564677439943:targetgroup/whalebird-prd/6c99e02df2e2f960
-  targetType: ip
+  targetGroupARN: arn:aws:elasticloadbalancing:ap-northeast-1:564677439943:targetgroup/whalebird/bb9de616466a650c
+  targetType: instance
