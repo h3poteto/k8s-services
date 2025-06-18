@@ -26,7 +26,7 @@
   ],
   "packageRules": [
     {
-      "matchPaths": ["raspberry/flux/**", "external-prd/flux/**"],
+      "matchPaths": ["raspberry/flux/**", "external/flux/**"],
       "enabled": false
     },
     {
@@ -40,10 +40,10 @@
     },
     {
       "additionalBranchPrefix": "{{baseDir}}-",
-      "commitMessagePrefix": "external-prd: ",
+      "commitMessagePrefix": "external: ",
       "matchPackagePatterns": ["*"],
       "matchPaths": [
-        "external-prd/**"
+        "external/**"
       ],
       "prPriority": 5
     }
