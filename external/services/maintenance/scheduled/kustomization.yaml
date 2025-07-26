@@ -7,6 +7,7 @@ resources:
 - configmap.yaml
 - external-secrets.yaml
 - pgrepack-job.yaml
+- broken-test.yaml
 
 images:
 - name: pgrepack
