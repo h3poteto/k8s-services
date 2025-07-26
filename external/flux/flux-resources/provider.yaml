@@ -6,5 +6,6 @@ metadata:
 spec:
   type: slack
   channel: external
+  address: https://slack.com/api/chat.postMessage
   secretRef:
     name: slack-bot
