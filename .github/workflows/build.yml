@@ -16,7 +16,7 @@ jobs:
           - raspberry
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Setup Flux CLI
         uses: fluxcd/flux2/action@v2.2.2
       - uses: allenporter/flux-local/action/test@7.10.1
