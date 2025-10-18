@@ -1,9 +1,10 @@
 name: Build
 
 on:
+  push:
+    branches: ["master"]
+    tags:
   pull_request:
-    branches:
-      - master
 
 jobs:
   test:
@@ -22,36 +23,3 @@ jobs:
         with:
           path: ${{ matrix.cluster }}
           enable-helm: true
-
-  diffs:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        cluster:
-          - external
-          - raspberry
-        resource:
-          - helmrelease
-          - kustomization
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Setup Flux CLI
-        uses: fluxcd/flux2/action@v2.2.3
-      - uses: allenporter/flux-local/action/diff@7.10.1
-        id: diff
-        with:
-          live-branch: master
-          path: ${{ matrix.cluster }}
-          resource: ${{ matrix.resource }}
-      - name: PR Comments
-        uses: mshick/add-pr-comment@v2
-        if: ${{ steps.diff.outputs.diff != '' }}
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          message-id: ${{ github.event.pull_request.number }}/${{ matrix.cluster }}/${{ matrix.resource }}
-          message-failure: Unable to post kustomization diff
-          message: |
-            `````diff
-            ${{ steps.diff.outputs.diff }}
-            `````
