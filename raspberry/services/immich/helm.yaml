@@ -18,10 +18,34 @@ spec:
     remediation:
       retries: 3
   values:
-    postgres:
-      enabled: false
+    # Refs: https://github.com/bjw-s/helm-charts/blob/923ef40a39520979c98f354ea23963ee54f54433/charts/library/common/values.yaml
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              # renovate: datasource=github-releases depName=immich-app/immich
+              tag: "v2.0.1"
+            env:
+              DB_HOSTNAME: database-pgvectors-postgresql.database.svc.cluster.local
+              DB_USERNAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-secrets
+                    key: db_user
+              DB_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-secrets
+                    key: db_password
+              DB_DATABASE_NAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-secrets
+                    key: db_name
+              LOG_LEVEL: verbose
 
-    redis:
+    valkey:
       enabled: true
 
     immich:
@@ -29,38 +53,16 @@ spec:
         library:
           existingClaim: photo-library
 
-    # Refs: https://github.com/bjw-s/helm-charts/blob/923ef40a39520979c98f354ea23963ee54f54433/charts/library/common/values.yaml
-    env:
-      DB_HOSTNAME: database-pgvectors-postgresql.database.svc.cluster.local
-      DB_USERNAME:
-        valueFrom:
-          secretKeyRef:
-            name: immich-secrets
-            key: db_user
-      DB_PASSWORD:
-        valueFrom:
-          secretKeyRef:
-            name: immich-secrets
-            key: db_password
-      DB_DATABASE_NAME:
-        valueFrom:
-          secretKeyRef:
-            name: immich-secrets
-            key: db_name
-      LOG_LEVEL: verbose
-
-    image:
-      # renovate: datasource=github-releases depName=immich-app/immich
-      tag: "v2.0.1"
-
-    controller:
-      strategy: Recreate
-
     server:
-      resources:
-        requests:
-          cpu: 150m
-          memory: 512M
+      controllers:
+        main:
+          strategy: Recreate
+          containers:
+            main:
+              resources:
+                requests:
+                  cpu: 150m
+                  memory: 512M
       ingress:
         main:
           enabled: false
@@ -77,7 +79,11 @@ spec:
               protocol: HTTP
 
     machine-learning:
-      resources:
-        requests:
-          cpu: 500m
-          memory: 2048M
+      controllers:
+        main:
+          containers:
+            main:
+              resources:
+                requests:
+                  cpu: 500m
+                  memory: 2048M
