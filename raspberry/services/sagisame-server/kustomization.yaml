@@ -13,4 +13,4 @@ resources:
 images:
 - name: sagisame-server
   newName: ghcr.io/h3poteto/sagisame-server
-  newTag: sha-533d3fe83da8ad1636ccf05accb317061ef9cfc8
+  newTag: sha-34abc0034b9b0057b069b5570370fcc6aa6e6716
