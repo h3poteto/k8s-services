@@ -16,4 +16,4 @@ resources:
 images:
 - name: coturn
   newName: coturn/coturn
-  newTag: 4.7.0
+  newTag: 4.8.0
