@@ -18,7 +18,7 @@ spec:
             defaultMode: 0777
       containers:
         - name: pgrepack
-          image: ghcr.io/h3poteto/pg_repack:1.4.6
+          image: ghcr.io/h3poteto/pg_repack:1.5.2
           imagePullPolicy: Always
           command: ["/var/opt/script/generate_pgpass.sh"]
           args: ["pg_repack", "-h", "$(DB_HOST)", "-U", "$(DB_USER)", "-k", "-d", "pleroma"]
