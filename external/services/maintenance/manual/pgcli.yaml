@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pgcli
+  namespace: maintenance
+  labels:
+    app: pgcli
+spec:
+  template:
+    metadata:
+      labels:
+        app: pgcli
+    spec:
+      containers:
+        - name: pgcli
+          image: ghcr.io/h3poteto/pgcli:latest
+          imagePullPolicy: Always
+          args: ["sleep", "3600"]
+          envFrom:
+            - secretRef:
+                name: db-env
+          resources:
+            requests:
+              memory: 250Mi
+              cpu: 200m
+      restartPolicy: Never
+  backoffLimit: 3
