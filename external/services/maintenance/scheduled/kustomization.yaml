@@ -11,4 +11,4 @@ resources:
 images:
 - name: pgrepack
   newName: ghcr.io/h3poteto/pg_repack
-  newTag: 1.4.6
+  newTag: 1.5.2
