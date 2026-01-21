@@ -89,3 +89,10 @@ metadata:
   name: cloudflare
   labels:
     name: cloudflare
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: home-assistant
+  labels:
+    name: home-assistant
