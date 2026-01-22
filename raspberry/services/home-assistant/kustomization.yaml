@@ -11,4 +11,4 @@ resources:
 images:
 - name: home-assistant
   newName: ghcr.io/home-assistant/home-assistant
-  newTag: 2026.1.1
+  newTag: 2026.1.2
