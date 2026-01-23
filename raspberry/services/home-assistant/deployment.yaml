@@ -20,6 +20,27 @@ spec:
         - name: config-directory
           persistentVolumeClaim:
             claimName: home-assistant-config
+        - name: config-template
+          configMap:
+            name: home-assistant-config
+      initContainers:
+        - name: config-init
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |
+              if [ ! -f /config/configuration.yaml ]; then
+                echo "Copying initial configuration..."
+                cp /config-template/configuration.yaml /config/configuration.yaml
+              else
+                echo "Configuration already exists, skipping..."
+              fi
+          volumeMounts:
+            - mountPath: /config
+              name: config-directory
+            - mountPath: /config-template
+              name: config-template
       containers:
         - name: controller
           image: home-assistant
