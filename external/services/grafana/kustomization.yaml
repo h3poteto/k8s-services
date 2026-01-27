@@ -13,4 +13,4 @@ resources:
 images:
 - name: grafana
   newName: grafana/grafana
-  newTag: 12.2.1-security-01
+  newTag: 12.3.1-security-01
