@@ -34,7 +34,7 @@ spec:
             - name: AWS_REGION
               value: ap-northeast-1
             - name: OTEL_EXPORTER_ENDPOINT
-              value: "http://monitoring-jaeger-collector.monitoring.svc.cluster.local:4318"
+              value: "http://monitoring-jaeger.monitoring.svc.cluster.local:4318"
           envFrom:
             - secretRef:
                 name: pleromaio-env
@@ -59,7 +59,7 @@ spec:
             - name: AWS_REGION
               value: ap-northeast-1
             - name: OTEL_EXPORTER_ENDPOINT
-              value: "http://monitoring-jaeger-collector.monitoring.svc.cluster.local:4318"
+              value: "http://monitoring-jaeger.monitoring.svc.cluster.local:4318"
           envFrom:
             - secretRef:
                 name: pleromaio-env

@@ -22,7 +22,7 @@ spec:
             - name: MIX_ENV
               value: prod
             - name: OTEL_EXPORTER_ENDPOINT
-              value: "http://monitoring-jaeger-collector.monitoring.svc.cluster.local:4318"
+              value: "http://monitoring-jaeger.monitoring.svc.cluster.local:4318"
             - name: REMOTE_POST_RETENTION_DAYS
               value: "360"
           envFrom:
