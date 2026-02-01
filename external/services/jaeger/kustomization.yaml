@@ -7,7 +7,7 @@ configMapGenerator:
 - name: oauth-proxy
   literals:
   - OAUTH2_PROXY_HTTP_ADDRESS='http://:8080'
-  - OAUTH2_PROXY_UPSTREAMS='http://monitoring-jaeger-query:16686/'
+  - OAUTH2_PROXY_UPSTREAMS='http://monitoring-jaeger:16686/'
   - OAUTH2_PROXY_PROVIDER=github
   - OAUTH2_PROXY_GITHUB_ORG="h3poteto"
   - OAUTH2_PROXY_GITHUB_USERS=h3poteto
