@@ -7,4 +7,4 @@ data:
   S3_BUCKET: seiyu-watch
   RELX_REPLACE_OS_VARS: "true"
   AWS_DEFAULT_REGION: ap-northeast-1
-  OTEL_EXPORTER_ENDPOINT: "http://monitoring-jaeger-collector.monitoring.svc.cluster.local:4318"
+  OTEL_EXPORTER_ENDPOINT: "http://monitoring-jaeger.monitoring.svc.cluster.local:4318"
