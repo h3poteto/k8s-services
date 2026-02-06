@@ -96,3 +96,10 @@ metadata:
   name: home-assistant
   labels:
     name: home-assistant
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: blog
+  labels:
+    name: blog

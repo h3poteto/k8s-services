@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: blog
+
+resources:
+- deployment.yaml
+- service.yaml
+
+images:
+- name: blog
+  newName: registry.gitlab.com/h3poteto/blog
+  newTag: latest
