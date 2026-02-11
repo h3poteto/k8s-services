@@ -10,4 +10,4 @@ resources:
 images:
 - name: blog
   newName: registry.gitlab.com/h3poteto/blog
-  newTag: c7b83493
+  newTag: de492bc9
