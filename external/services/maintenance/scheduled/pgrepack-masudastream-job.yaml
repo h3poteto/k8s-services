@@ -5,7 +5,7 @@ metadata:
   labels:
     app: pgrepack-masudastream
 spec:
-  schedule: "18 16 20 * *"
+  schedule: "18 16 * * 3"
   jobTemplate:
     spec:
       template:
@@ -38,4 +38,4 @@ spec:
                   memory: 500Mi
                   cpu: 500m
           restartPolicy: Never
-      backoffLimit: 3
+      backoffLimit: 0
