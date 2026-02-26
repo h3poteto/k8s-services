@@ -6,7 +6,7 @@ metadata:
   labels:
     app: prune-pleromaio
 spec:
-  schedule: "18 16 9 * *"
+  schedule: "18 4 * * *"
   jobTemplate:
     spec:
       template:
@@ -35,5 +35,4 @@ spec:
                   cpu: 100m
                 limits:
                   memory: 1800Mi
-
-      backoffLimit: 3
+      backoffLimit: 0
