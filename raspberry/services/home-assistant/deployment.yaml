@@ -41,17 +41,6 @@ spec:
               name: config-directory
             - mountPath: /config-template
               name: config-template
-      dnsConfig:
-        nameservers:
-          - 8.8.8.8
-          - 1.1.1.1
-        options:
-          - name: ndots
-            value: "1"
-          - name: timeout
-            value: "5"
-          - name: attempts
-            value: "3"
       containers:
         - name: controller
           image: home-assistant
