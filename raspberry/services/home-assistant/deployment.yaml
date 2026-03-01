@@ -41,9 +41,10 @@ spec:
               name: config-directory
             - mountPath: /config-template
               name: config-template
-      dnsConfig:
-        options:
-          - name: single-request-reopen
+      securityContext:
+        sysctls:
+          - name: net.ipv6.conf.all.disable_ipv6
+            value: "1"
       containers:
         - name: controller
           image: home-assistant
