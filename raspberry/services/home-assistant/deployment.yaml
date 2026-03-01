@@ -41,10 +41,12 @@ spec:
               name: config-directory
             - mountPath: /config-template
               name: config-template
-      securityContext:
-        sysctls:
-          - name: net.ipv6.conf.all.disable_ipv6
+      dnsConfig:
+        options:
+          - name: timeout
             value: "1"
+          - name: attempts
+            value: "5"
       containers:
         - name: controller
           image: home-assistant
