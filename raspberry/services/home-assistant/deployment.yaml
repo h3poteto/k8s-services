@@ -41,12 +41,6 @@ spec:
               name: config-directory
             - mountPath: /config-template
               name: config-template
-      dnsConfig:
-        options:
-          - name: timeout
-            value: "1"
-          - name: attempts
-            value: "5"
       containers:
         - name: controller
           image: home-assistant
