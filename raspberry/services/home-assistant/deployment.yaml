@@ -41,6 +41,9 @@ spec:
               name: config-directory
             - mountPath: /config-template
               name: config-template
+      dnsConfig:
+        options:
+          - name: single-request-reopen
       containers:
         - name: controller
           image: home-assistant
