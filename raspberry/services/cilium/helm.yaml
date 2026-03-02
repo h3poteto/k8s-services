@@ -15,7 +15,6 @@ spec:
         namespace: flux-system
       interval: 1m
   upgrade:
-    crds: CreateReplace
     remediation:
       retries: 3
   values:
