@@ -14,4 +14,4 @@ resources:
 images:
 - name: phoenix
   newName: 564677439943.dkr.ecr.ap-northeast-1.amazonaws.com/h3poteto/seiyuwatch
-  newTag: sha-61210421ab6744eb1567f13df551834c7a6f2662
+  newTag: sha-659aa974e20fa01aeb54e37a09c0fabae45f3ff2
