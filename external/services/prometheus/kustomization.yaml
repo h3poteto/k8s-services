@@ -4,12 +4,4 @@ kind: Kustomization
 namespace: monitoring
 
 resources:
-- configmap.yaml
-- statefulset.yaml
-- rbac.yaml
-- service.yaml
-
-images:
-- name: prometheus
-  newName: prom/prometheus
-  newTag: v3.9.1
+- helm.yaml
