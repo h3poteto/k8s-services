@@ -7,6 +7,6 @@ spec:
     - name: http
       port: 8080
       targetPort: 8080
-  type: NodePort
+  type: ClusterIP
   selector:
     app: oauth-proxy
