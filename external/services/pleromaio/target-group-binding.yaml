@@ -6,5 +6,5 @@ spec:
   serviceRef:
     name: pleromaio-service
     port: 80
-  targetGroupARN: arn:aws:elasticloadbalancing:ap-northeast-1:564677439943:targetgroup/pleroma/638751e9536f1503
-  targetType: ip
+  targetGroupARN: arn:aws:elasticloadbalancing:ap-northeast-1:564677439943:targetgroup/pleroma/a757b0a883cf32b4
+  targetType: instance
