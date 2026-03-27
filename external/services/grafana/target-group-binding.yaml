@@ -6,5 +6,5 @@ spec:
   serviceRef:
     name: grafana-service
     port: 3000
-  targetGroupARN: arn:aws:elasticloadbalancing:ap-northeast-1:564677439943:targetgroup/grafana/cd8d1464146d7fa2
-  targetType: ip
+  targetGroupARN: arn:aws:elasticloadbalancing:ap-northeast-1:564677439943:targetgroup/grafana/3f4d8e0ddc96089f
+  targetType: instance

@@ -6,5 +6,5 @@ spec:
   serviceRef:
     name: masudastream-service
     port: 80
-  targetGroupARN: arn:aws:elasticloadbalancing:ap-northeast-1:564677439943:targetgroup/masudastream/7321e23e8d002ab2
-  targetType: ip
+  targetGroupARN: arn:aws:elasticloadbalancing:ap-northeast-1:564677439943:targetgroup/masudastream/d4a333245ac77c42
+  targetType: instance
